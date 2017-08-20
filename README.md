@@ -4,11 +4,12 @@
 [![npm](https://img.shields.io/npm/v/es-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/es-sass-webpack-starter)
 [![David](https://img.shields.io/david/chrisalexander55/es-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)]()
 [![David](https://img.shields.io/david/dev/chrisalexander55/es-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)]()
-[![GitHub commits](https://img.shields.io/github/commits-since/chrisalexander55/es-sass-webpack-starter/1.0.0.svg?maxAge=2592000)](https://github.com/chrisalexander55/es-sass-webpack-starter)
+[![GitHub issues](https://img.shields.io/github/issues/chrisalexander55/es-sass-webpack-starter.svg)]()
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/chrisalexander55/es-sass-webpack-starter.svg)]()
 
 ## Overview
 
-This is a starter/boilerplate project for web applications requiring ECMAScript (latest), webpack (latest), sass and postcss - all managed in a lightly configured Docker container. This project is particularly helpful for technical craftsmen/craftswomen demanding more control of their frontend tech stack and tired of the growing complexity found in today's Franken-frameworks.
+This is a starter/boilerplate project for a web applications requiring ECMAScript (latest), webpack (latest), sass and postcss - all managed in a lightly configured Docker container. This project is particularly helpful for technical craftsmen/craftswomen demanding more control of their frontend tech stack and tired of the growing complexity found in today's Franken-frameworks.
 
 > This repository is inspired and evolved from [micooz/es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter).
 
@@ -41,8 +42,8 @@ $ . ./run.sh
 ### Hydration
 
 ```bash
-$ git clone []
-$ cd []
+$ git clone https://github.com/chrisalexander55/es-sass-webpack-starter.git
+$ cd es-sass-webpack-starter
 $ npm i
 ```
 
