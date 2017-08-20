@@ -1,15 +1,15 @@
-# es-sass-webpack-starter
+# ecmascript-sass-webpack-starter
 
-[![npm](https://img.shields.io/npm/l/es-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://github.com/chrisalexander55/es-sass-webpack-starter/blob/master/LICENSE)
-[![npm](https://img.shields.io/npm/v/es-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/es-sass-webpack-starter)
-[![David](https://img.shields.io/david/chrisalexander55/es-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)]()
-[![David](https://img.shields.io/david/dev/chrisalexander55/es-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)]()
-[![GitHub issues](https://img.shields.io/github/issues/chrisalexander55/es-sass-webpack-starter.svg)]()
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/chrisalexander55/es-sass-webpack-starter.svg)]()
+[![npm](https://img.shields.io/npm/l/ecmascript-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/ecmascript-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/ecmascript-sass-webpack-starter)
+[![David](https://img.shields.io/david/chrisalexander55/ecmascript-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)]()
+[![David](https://img.shields.io/david/dev/chrisalexander55/ecmascript-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)]()
+[![GitHub issues](https://img.shields.io/github/issues/chrisalexander55/ecmascript-sass-webpack-starter.svg)]()
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/chrisalexander55/ecmascript-sass-webpack-starter.svg)]()
 
 ## Overview
 
-This is a starter/boilerplate project for a web applications requiring ECMAScript (latest), webpack (latest), sass and postcss - all managed in a lightly configured Docker container. This project is particularly helpful for technical craftsmen/craftswomen demanding more control of their frontend tech stack and tired of the growing complexity found in today's Franken-frameworks.
+This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), webpack (3.X), sass and postcss - all managed in a lightly configured Docker container. This project is particularly helpful for technical craftsmen/craftswomen demanding more control of their frontend tech stack and tired of the growing complexity found in today's Franken-frameworks.
 
 > This repository is inspired and evolved from [micooz/es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter).
 
@@ -42,8 +42,8 @@ $ . ./run.sh
 ### Hydration
 
 ```bash
-$ git clone https://github.com/chrisalexander55/es-sass-webpack-starter.git
-$ cd es-sass-webpack-starter
+$ git clone https://github.com/chrisalexander55/ecmascript-sass-webpack-starter.git
+$ cd ecmascript-sass-webpack-starter
 $ npm i
 ```
 

@@ -1,5 +1,5 @@
 {
-  "name": "es-sass-webpack-starter",
+  "name": "ecmascript-sass-webpack-starter",
   "version": "1.0.0",
   "description": "A starter project for a web application requiring EcmaScript, Webpack, Sass; all running in a Docker container.",
   "person": {
@@ -10,13 +10,13 @@
     "npm": ">=3.0.0"
   },
   "license": "MIT",
-  "homepage": "https://github.com/chrisalexander55/es-sass-webpack-starter#readme",
+  "homepage": "https://github.com/chrisalexander55/ecmascript-sass-webpack-starter#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chrisalexander55/es-sass-webpack-starter.git"
+    "url": "git+https://github.com/chrisalexander55/ecmascript-sass-webpack-starter.git"
   },
   "bugs": {
-    "url": "https://github.com/chrisalexander55/es-sass-webpack-starter/issues"
+    "url": "https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/issues"
   },
   "keywords": [
     "docker",
