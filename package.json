@@ -1,0 +1,78 @@
+{
+  "name": "es-sass-webpack-starter",
+  "version": "1.0.0",
+  "description": "A starter project for web application requiring EcmaScript, Webpack, Sass; all running in a Docker container.",
+  "person": {
+    "name": "Chris Alexander"
+  },
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=3.0.0"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/chrisalexander55/es-sass-webpack-starter#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisalexander55/es-sass-webpack-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrisalexander55/es-sass-webpack-starter/issues"
+  },
+  "keywords": [
+    "docker",
+    "container",
+    "es6",
+    "es7",
+    "webpack3",
+    "starter",
+    "template",
+    "boilerplate",
+    "postcss",
+    "sass",
+    "scss",
+    "css module"
+  ],
+  "scripts": {
+    "postinstall": "cp env.example.js env.js",
+    "start": "webpack-dev-server --host 0.0.0.0 --config webpack/dev.config.js --watch",
+    "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
+    "precommit": "eslint src/js"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "clean-webpack-plugin": "^0.1.16",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.1",
+    "css-loader": "^0.28.4",
+    "eslint": "^4.2.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-react": "^7.1.0",
+    "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.29.0",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "stylelint": "^8.0.0",
+    "stylelint-config-standard": "^17.0.0",
+    "stylelint-declaration-strict-value": "^1.0.4",
+    "stylelint-order": "^0.6.0",
+    "stylelint-scss": "^2.0.1",
+    "stylelint-webpack-plugin": "^0.9.0",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.1.0",
+    "webpack-dev-server": "^2.5.1",
+    "webpack-merge": "^4.1.0"
+  }
+}
