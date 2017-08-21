@@ -21,8 +21,12 @@
   "keywords": [
     "docker",
     "container",
+    "ecmascript",
     "es6",
+    "es2016",
     "es7",
+    "es2017",
+    "webpack",
     "webpack3",
     "starter",
     "template",
