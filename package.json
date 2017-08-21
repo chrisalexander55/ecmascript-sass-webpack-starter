@@ -30,7 +30,7 @@
     "postcss",
     "sass",
     "scss",
-    "css module"
+    "css"
   ],
   "scripts": {
     "postinstall": "cp env.example.js env.js",

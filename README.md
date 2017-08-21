@@ -36,7 +36,8 @@ If you haven't already done so, install [Docker](https://www.docker.com/) on you
 # hydrate and start container
 $ . ./run.sh
 
-# this will dump you on the commandline inside the container; all remaining CLI tasks happen here...
+# this will dump you on the commandline inside the container; 
+# all remaining CLI tasks happen here...
 ```
 
 ### Hydration
@@ -59,6 +60,9 @@ $ npm run postinstall
 # - edit src/proxy/config.js to hit resources you need 
 # - starts up the webpack-dev-server
 $ npm start
+
+# On your host OS, open your favorite web browser and point to url 
+# http://localhost:3000
 
 # 2. production
 # outputs into dist directory
