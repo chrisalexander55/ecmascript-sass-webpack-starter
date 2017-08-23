@@ -18,10 +18,11 @@ This is a starter/boilerplate project for a web application requiring ECMAScript
 This project supports the following features:
 
 * ES with Babel support
-* ES linter: ESLint
-* Webpack 3 (with dev-server)
+* ES Linter: ESLint
+* Webpack (3.X with dev-server)
 * Webpack Loaders: sass-loader, css-loader
 * Webpack Plugins: sylelint-scss
+* Progress Web Application (PWA) markup support
 * Docker Container (optional)
 
 ## Installation
@@ -70,6 +71,45 @@ $ npm run precommit
 # http://localhost:3000
 
 # 2. production
-# outputs into dist directory
+# outputs into dist/ directory
 $ npm run build
 ```
+
+## Built Out Header Element
+
+I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen way too often how 
+under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO via a web application. Configured right, the HTML Header is powerful! Once you open index.html, edit as needed.
+
+Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you to visit their site to bulk-up your knowledge!
+
+### Base Feature Support
+
+Standard tags/attributes cover:
+
+* Security
+* Caching
+* Geolocation
+* Site ownership verification
+* Telephone number formating
+
+### Progressive Web Application (PWA) Support
+
+Generally, developers are aware of the native JavaScript APIs and polyfills related to PWAs but most are not 
+aware that markup also offers support and must be configured for an implementation. The index.html 
+document includes PWA compliant meta and link tags/attributes.
+
+### Platform Coverage
+
+Header tags/attributes cover the following platforms:
+
+* iOS
+* Android/Chrome
+* Windows
+
+### Social Media Coverage
+
+If you need to share content tailored for social media platforms, the popular technically needy ecosystems  include:
+
+* Facebook
+* Google
+* Pinterest
