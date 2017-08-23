@@ -15,14 +15,14 @@ This is a starter/boilerplate project for a web application requiring ECMAScript
 
 ## Features
 
-This project supports the following features:
+The project supports the following features:
 
 * ES with Babel support
 * ES Linter: ESLint
 * Webpack (3.X with dev-server)
 * Webpack Loaders: sass-loader, css-loader
 * Webpack Plugins: sylelint-scss
-* Progress Web Application (PWA) markup support
+* Progressive Web Application (PWA) markup support
 * Docker Container (optional)
 
 ## Installation
@@ -33,7 +33,7 @@ Windows platform users should install [GitBash](https://git-scm.com/downloads) b
 
 If you haven't already done so, install [Docker](https://www.docker.com/) on you host OS. Windows <=7 users need to install [Docker Toolbox](https://www.docker.com/products/docker-toolbox). If you have any issues, hit-up the Docker forums or SO.
 
-We use the latest [official Node image](https://github.com/nodejs/docker-node) from the [Node.js Foundation](https://nodejs.org). Edit the Dockerfile as you see fit.
+The latest [official Node image](https://hub.docker.com/_/node/) from the [Node.js Foundation](https://nodejs.org) is used by the container. Edit the Dockerfile as you see fit.
 
 ```bash
 # build and start container
@@ -78,9 +78,9 @@ $ npm run build
 ## Built Out Header Element
 
 I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen way too often how 
-under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO via a web application. Configured right, the HTML Header is powerful! Once you open index.html, edit as needed.
+under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful! Once you open index.html, edit as needed.
 
-Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you to visit their site to bulk-up your knowledge!
+> Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you to visit their site to bulk-up your knowledge!
 
 ### Base Feature Support
 
@@ -102,9 +102,7 @@ If you need to share content tailored for social media platforms, the popular te
 
 ### Progressive Web Application (PWA) Support
 
-Generally, developers are aware of the native JavaScript APIs and polyfills related to PWAs but most are not 
-aware that markup also offers support and must be configured for an implementation. The index.html 
-document includes PWA compliant meta and link tags/attributes.
+Generally, developers are aware of the native JavaScript APIs and polyfills related to PWAs but most are not aware that markup also offers support and must be configured for an implementation. The index.html document includes PWA compliant meta and link tags/attributes.
 
 #### Platform Coverage
 

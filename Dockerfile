@@ -1,4 +1,4 @@
-FROM node:8.4
+FROM node:latest
 MAINTAINER Chris Alexander
 LABEL description="A starter project for web application requiring EcmaScript, Webpack, Sass."
 
