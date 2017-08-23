@@ -92,20 +92,6 @@ Standard tags/attributes cover:
 * Site ownership verification
 * Telephone number formating
 
-### Progressive Web Application (PWA) Support
-
-Generally, developers are aware of the native JavaScript APIs and polyfills related to PWAs but most are not 
-aware that markup also offers support and must be configured for an implementation. The index.html 
-document includes PWA compliant meta and link tags/attributes.
-
-### Platform Coverage
-
-Header tags/attributes cover the following platforms:
-
-* iOS
-* Android/Chrome
-* Windows
-
 ### Social Media Coverage
 
 If you need to share content tailored for social media platforms, the popular technically needy ecosystems  include:
@@ -113,3 +99,17 @@ If you need to share content tailored for social media platforms, the popular te
 * Facebook
 * Google
 * Pinterest
+
+### Progressive Web Application (PWA) Support
+
+Generally, developers are aware of the native JavaScript APIs and polyfills related to PWAs but most are not 
+aware that markup also offers support and must be configured for an implementation. The index.html 
+document includes PWA compliant meta and link tags/attributes.
+
+#### Platform Coverage
+
+Header tags/attributes cover the following platforms:
+
+* iOS
+* Android/Chrome
+* Windows
