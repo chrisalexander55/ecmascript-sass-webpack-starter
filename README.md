@@ -80,7 +80,7 @@ $ npm run build
 I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen way too often how 
 under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful! Once you open index.html, edit as needed.
 
-> Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you to visit their site to bulk-up your knowledge!
+> Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
 
 ### Base Feature Support
 
@@ -102,11 +102,11 @@ If you need to share content tailored for social media platforms, the popular te
 
 ### Progressive Web Application (PWA) Support
 
-Generally, developers are aware of the native JavaScript APIs and polyfills related to PWAs but most are not aware that markup also offers support and must be configured for an implementation. The index.html document includes PWA compliant meta and link tags/attributes.
+Generally, developers are aware of the native JavaScript APIs and polyfills related to PWAs but most are not aware that markup also offers support and must be configured for an implementation.
 
 #### Platform Coverage
 
-Header tags/attributes cover the following platforms:
+Platform compliant meta tags/attributes covered are:
 
 * iOS
 * Android/Chrome

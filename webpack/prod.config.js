@@ -76,8 +76,8 @@ module.exports = webpackMerge(webpackCommon, {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.resolve(__dirname, '../src/static/index.html'),
-      favicon: path.resolve(__dirname, '../src/static/favicon.ico'),
+      template: path.resolve(__dirname, '../src/index.html'),
+      favicon: path.resolve(__dirname, '../src/assets/platform/favicon.ico'),
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -92,7 +92,7 @@ module.exports = webpackMerge(webpackCommon, {
       }
     }),
     new CopyWebpackPlugin([
-      {from: path.resolve(__dirname, '../src/static')}
+      {from: path.resolve(__dirname, '../src/assets')}
     ], {
       ignore: ['index.html', 'favicon.ico']
     }),

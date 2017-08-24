@@ -17,7 +17,7 @@ module.exports = webpackMerge(webpackCommon, {
 
   output: {
 
-    path: path.resolve(__dirname, '../src/static/dist'),
+    path: path.resolve(__dirname, '../src/dist'),
 
     filename: '[name].js',
 
@@ -68,8 +68,8 @@ module.exports = webpackMerge(webpackCommon, {
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.resolve(__dirname, '../src/static/index.html'),
-      favicon: path.resolve(__dirname, '../src/static/favicon.ico')
+      template: path.resolve(__dirname, '../src/index.html'),
+      favicon: path.resolve(__dirname, '../src/assets/platform/favicon.ico')
     }),
     new HotModuleReplacementPlugin(),
     new StyleLintPlugin({
@@ -85,7 +85,7 @@ module.exports = webpackMerge(webpackCommon, {
   devServer: {
     host: env.devServer.host || 'localhost',
     port: env.devServer.port || 3000,
-    contentBase: path.resolve(__dirname, '../src/static'),
+    contentBase: path.resolve(__dirname, '../src'),
     watchContentBase: true,
     compress: true,
     hot: true,

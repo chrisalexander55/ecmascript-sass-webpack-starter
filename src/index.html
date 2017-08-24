@@ -53,7 +53,7 @@
   <!-- Short description of your site's subject -->
   <meta name="subject" content="your website's subject">
   
-  <!-- Gives a general age rating based on sites content -->
+  <!-- Gives a general age rating based on site content -->
   <meta name="rating" content="general|mature|restricted|14 years|safe for kids">
   
   <!-- Allows control over how referrer information is passed -->
@@ -117,14 +117,14 @@
   <meta name="msapplication-task-separator" content="1">
   <meta name="msapplication-badge" value="frequency=[NUMBER_IN_MINUTES];polling-uri=[http://example.com/path/to/file.xml]">
   <meta name="msapplication-TileColor" content="#FF3300">
-  <meta name="msapplication-TileImage" content="assets/platform/windows/tileimage.jpg">
+  <meta name="msapplication-TileImage" content="assets/platform/windows/tile.jpg">
   <!-- Pinned IE 11 Live Tiles (https://msdn.microsoft.com/en-us/library/bg183312(v=vs.85).aspx) -->
   <meta name="msapplication-square70x70logo" content="assets/platform/windows/tile-70x70.png" />
   <meta name="msapplication-square150x150logo" content="assets/platform/windows/tile-150x150.png" />
   <meta name="msapplication-wide310x150logo" content="assets/platform/windows/tile-310x150.png" />
   <meta name="msapplication-square310x310logo" content="assets/platform/windows/tile-310x310.png" />
 
-  <meta name="msapplication-config" content="assets/icons/windows/browserconfig.xml">
+  <meta name="msapplication-config" content="assets/platform/windows/browserconfig.xml">
   <!-- matches the 2 pinned site tasks above from msapplication-task tag -->
   <meta name="msapplication-notification" content="frequency=[NUMBER_IN_SECONDS];polling-uri=[http://example.com/livetile];polling-uri2=[http://example.com/livetile2]">
 
@@ -157,6 +157,13 @@
   <!-- 
     ########## Start: Link Tags ##########
   -->
+  <!-- UA directives -->
+  <!-- Origin that will be used to fetch resources, the UA "should" resolve as early as possible; https://www.w3.org/TR/resource-hints/#dns-prefetch -->
+  <link href="//some-origin.com" rel="dns-prefetch">
+  <!-- Initiate early connection (DNS, TCP handshake and optional TLS negotiation) to origin; https://www.w3.org/TR/resource-hints/#preconnect -->
+  <link href="https://some-origin.com" rel="preconnect">
+  <!-- Instructs origin to retrieve resource without blocking main thread; https://www.w3.org/TR/preload/  -->
+  <link href="https://some-origin.com/[webfonts|some-large-asset]" rel="preload" as="[font|audio|document|embed|fetch|image|object|script|style|tract|worker|video]" type="[MIME-TYPE]" media="[media-type|media-query]">
 
   <!-- default icon -->
   <link href="assets/platform/favicon.ico" rel="icon" type="image/x-icon">
@@ -181,7 +188,7 @@
   <!-- Related to iOS apple-itunes-app App deep linking above -->
   <link href="ios-app://[APP-ID]/http/[url-sample.com]" rel="alternate">
   <!-- For Safari pinned tabs; see https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html -->
-  <link href="assets/platform/ios/safari-pinned-icon.svg" rel="mask-icon" color="[COLORNAME]">
+  <link href="assets/platform/ios/safari-pinned-icon.svg" rel="mask-icon" type="image/svg+xml" color="[COLORNAME]">
 
   <!-- %%%% Android/Chrome %%%% -->
   <!-- Android icons -->
@@ -189,7 +196,7 @@
   <!-- Related to Android google-play-app App deep linking above -->
   <link href="android-app://[package-name/http/url-sample.com]" rel="alternate">
   <!-- Supported by Chrome Mobile (Android Only) + Opera; see https://developer.mozilla.org/en-US/docs/Web/Manifest -->
-  <link href="assets/platform/site.webmanifest.json" rel="manifest">
+  <link href="assets/platform/site.manifest.json" rel="manifest">
 
   <!-- Refer to a copyright statement -->
   <link href="[URL/TO/COPYRIGHT.HTML]" rel="license">
@@ -198,8 +205,12 @@
     ########## END: Link Tags ##########
   -->
 
-  <title>[EcmaScript-Sass-Webpack-Starter]</title>
+  <!-- Scripts (generally, preload > async) 
+  <script src="https://origin.com/my-script.js" async defer></script>
+  -->
+  <noscript></noscript>
 
+  <title>[EcmaScript-Sass-Webpack-Starter]</title>
 </head>
 <body>
   <h1>EcmaScript-Sass-Webpack-Starter</h1>
