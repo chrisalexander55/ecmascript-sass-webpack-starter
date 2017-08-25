@@ -10,6 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = webpackMerge(webpackCommon, {
 
@@ -79,6 +81,19 @@ module.exports = webpackMerge(webpackCommon, {
       failOnError: false,
       quiet: false,
       syntax: 'scss'
+    }),
+    new DashboardPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'server',
+      analyzerHost: '0.0.0.0',
+      analyzerPort: 3001,
+      reportFilename: 'bundle-report.html',
+      defaultSizes: 'parsed',
+      openAnalyzer: false,
+      generateStatsFile: false,
+      statsFilename: 'bundle-stats.json',
+      statsOptions: null,
+      logLevel: 'info'
     })
   ],
 

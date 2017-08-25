@@ -12,6 +12,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = webpackMerge(webpackCommon, {
 
@@ -135,6 +136,18 @@ module.exports = webpackMerge(webpackCommon, {
           includePaths: [path.resolve(__dirname, '../src/js')]
         }
       }
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'server',
+      analyzerHost: '0.0.0.0',
+      analyzerPort: 3001,
+      reportFilename: 'bundle-report.html',
+      defaultSizes: 'parsed',
+      openAnalyzer: false,
+      generateStatsFile: false,
+      statsFilename: 'bundle-stats.json',
+      statsOptions: null,
+      logLevel: 'info'
     })
   ]
 
