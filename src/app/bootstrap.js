@@ -18,7 +18,7 @@ function main() {
     prop3: 'prop3'
   });
 
-  // we can make requests to multiple domains, check out proxy/rules.js
+  // we can make requests to multiple domains, check out app/xhr/config.js
   const http = new Http();
 
   // send request to github.com

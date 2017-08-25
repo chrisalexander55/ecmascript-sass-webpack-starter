@@ -3,7 +3,7 @@ const webpackMerge = require('webpack-merge');
 const webpackCommon = require('./common.config');
 
 const env = require('../env');
-const proxyRules = require('../src/proxy/config');
+const proxyRules = require('../src/app/xhr/config');
 
 // webpack plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');

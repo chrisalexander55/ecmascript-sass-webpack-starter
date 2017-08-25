@@ -5,9 +5,9 @@ module.exports = {
 
   entry: {
     'app': [
-      './src/js/bootstrap.js'
+      './src/app/bootstrap.js'
     ],
-    'vendor': './src/js/vendor.js'
+    'vendor': './src/app/vendor.js'
   },
 
   resolve: {

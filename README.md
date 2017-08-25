@@ -51,6 +51,15 @@ $ cd ecmascript-sass-webpack-starter
 $ npm i
 ```
 
+After installation, you will see this directory structure (only key objects illustrated):
+
+```bash
+|- src
+    |- assets
+    |   |- platforms
+    |- app
+```
+
 ## Configuration
 
 ```bash
@@ -60,7 +69,7 @@ $ npm run postinstall
 # edit env.js per your environment needs
 
 # 1. development
-# - edit src/proxy/config.js to hit resources you need 
+# - edit src/app/xhr/config.js to hit resources you need 
 # - starts up the webpack-dev-server
 $ npm start
 
