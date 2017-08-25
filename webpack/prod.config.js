@@ -17,19 +17,12 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = webpackMerge(webpackCommon, {
 
   bail: true,
-
   devtool: 'source-map',
-
   output: {
-
     path: path.resolve(__dirname, '../dist'),
-
     filename: '[name]-[hash].min.js',
-
     sourceMapFilename: '[name]-[hash].map',
-
     chunkFilename: '[id]-[chunkhash].js'
-
   },
 
   module: {
@@ -125,7 +118,7 @@ module.exports = webpackMerge(webpackCommon, {
       configFile: '.stylelintrc',
       context: 'src/sass',
       files: '**/*.scss',
-      failOnError: false,
+      failOnError: true,
       quiet: false,
       syntax: 'scss'
     }),

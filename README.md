@@ -9,7 +9,7 @@
 
 ## Overview
 
-This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass - served from a lightly configured Docker container. This project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing complexity of today's Franken-frameworks.
+This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass - served from a lightly configured Docker container. The project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing complexity of today's Franken-frameworks.
 
 > This repository is inspired and evolved from [micooz/es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter).
 
@@ -17,12 +17,11 @@ This is a starter/boilerplate project for a web application requiring ECMAScript
 
 The project supports the following features:
 
-* ES with Babel support
-* ES Linter: ESLint
-* Webpack (3.X with dev-server)
-* Webpack Loaders: sass-loader, css-loader
-* Webpack Plugins: sylelint-scss
-* Progressive Web Application (PWA) markup support
+* ES (Babel and ESLint)
+* Webpack (3.X, dev-server)
+* Webpack Dashboard
+* Google Lighthouse performance/practice profiling
+* Progressive Web Application (PWA) markup compliance
 * Docker Container
 
 ## Installation

@@ -18,21 +18,14 @@ module.exports = webpackMerge(webpackCommon, {
   devtool: 'inline-source-map',
 
   output: {
-
     path: path.resolve(__dirname, '../src/dist'),
-
     filename: '[name].js',
-
     sourceMapFilename: '[name].map',
-
     chunkFilename: '[id]-chunk.js',
-
     publicPath: '/'
-
   },
 
   module: {
-
     rules: [
       {
         test: /\.scss$/,
@@ -78,7 +71,7 @@ module.exports = webpackMerge(webpackCommon, {
       configFile: '.stylelintrc',
       context: 'src/sass',
       files: '**/*.scss',
-      failOnError: false,
+      failOnError: true,
       quiet: false,
       syntax: 'scss'
     }),

@@ -3,9 +3,9 @@
 ## 1.0.4
 
 * reorg of src/
-* added icons (default and platform-specific)
+* added icons (default and platform-specific); they are empty bits
 * tweaked platform PWA manifests
-* provided more instructional comments in <head> of index.html
+* provided more instructional comments in head element of index.html
 * added webpack-dashboard support
 * added webpack-bundle-analyzer support
 * added google lighthouse CLI support
