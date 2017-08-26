@@ -4,6 +4,7 @@ const autoprefixer = require('autoprefixer');
 const webpackCommon = require('./common.config');
 
 // webpack plugins
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
@@ -13,6 +14,19 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+const MINIFY_OPTS =  {
+  removeComments: true,
+  collapseWhitespace: true,
+  removeRedundantAttributes: true,
+  useShortDoctype: true,
+  removeEmptyAttributes: true,
+  removeStyleLinkTypeAttributes: true,
+  keepClosingSlash: true,
+  minifyJS: true,
+  minifyCSS: true,
+  minifyURLs: true
+}
 
 module.exports = webpackMerge(webpackCommon, {
 
@@ -70,25 +84,53 @@ module.exports = webpackMerge(webpackCommon, {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.resolve(__dirname, '../src/index.html'),
-      favicon: path.resolve(__dirname, '../src/assets/platform/favicon.ico'),
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      }
+      template: path.resolve(__dirname, '../src/app/pages/welcome.html'),
+      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
+      minify: MINIFY_OPTS
     }),
+
+    // ####### add chunks as script tags within respective HTML file ########
+    // welcome.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/pages/welcome.html'),
+      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
+      chunks: ['welcome']
+    }),
+    // // some-page-1.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/pages/some-page-1.html'),
+      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
+      chunks: ['some-page-1']
+    }),
+    // // some-page-2.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/pages/some-page-2.html'),
+      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
+      chunks: ['some-page-2']
+    }),
+    // ###############################
+
+    //Put modules common to all modules into a separate chunk!
+    new CommonsChunkPlugin({
+      children: true,
+      minChunks: 3,
+      filename: "common-[id]-[hash]"
+    }),
+
+    // Put common async (lazy) modules into a separate chunk!
+    // new CommonsChunkPlugin({
+    //   async: "common-lazy-[id].js", 
+    //   children: true, 
+    //   filename: "common-lazy-[id].js"
+    // }),
+
     new CopyWebpackPlugin([
-      {from: path.resolve(__dirname, '../src/assets')}
+      {from: path.resolve(__dirname, '../src/app/assets')}
     ], {
-      ignore: ['index.html', 'favicon.ico']
+      ignore: ['welcome.html', 'favicon.ico']
     }),
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '..'),
@@ -126,7 +168,7 @@ module.exports = webpackMerge(webpackCommon, {
       options: {
         context: '/',
         sassLoader: {
-          includePaths: [path.resolve(__dirname, '../src/js')]
+          includePaths: [path.resolve(__dirname, '../src/app/js')]
         }
       }
     }),

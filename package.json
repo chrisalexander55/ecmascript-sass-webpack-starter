@@ -38,10 +38,11 @@
   ],
   "scripts": {
     "postinstall": "cp env.example.js env.js",
-    "start": "webpack-dashboard -- webpack-dev-server --host 0.0.0.0 --config webpack/dev.config.js --watch",
+    "start": "webpack-dashboard -- webpack-dev-server --host 0.0.0.0 --config webpack/dev.config.js --watch --open-page \"/welcome.html\"",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
     "perf-profile": "lighthouse --output-path=./perf/lighthouse-report.json --output json --save-artifacts",
-    "precommit": "eslint src/js"
+    "precommit": "eslint src/app/js",
+    "precommit-fix": "eslint src/app/js --fix"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0"

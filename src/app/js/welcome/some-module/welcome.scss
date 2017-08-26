@@ -1,0 +1,21 @@
+.table {
+  padding: 20px;
+  border-radius: 3px;
+  box-shadow: #000 0 0 3px;
+
+  caption {
+    padding: 5px 0;
+    font-size: 1.2em;
+    text-decoration: underline;
+  }
+
+  thead tr th {
+    font-size: 1.2em;
+    font-weight: 800;
+  }
+
+  td {
+    padding: 3px;
+    text-align: left;
+  }
+}

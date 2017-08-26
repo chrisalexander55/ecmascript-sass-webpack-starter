@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+  <!-- 
+    #############################################################
+    Order is important, including href placement! Edit as needed!
+    #############################################################
+   -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- 
+    ########## START: Base Feature Support ##########
+   -->
+  
+  <!-- security related -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src https:; object-src 'none'; img-src 'self' [url]"; script-src 'self'; style-src 'self'; frame-ancestors 'none'> -->
+  <meta http-equiv="Strict-Transport-Security" content="max-age=63072000">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Window-Target" content="_value">
+  
+  <!-- Name of web application (only should be used if the website is used as an app) -->
+  <meta name="application-name" content="Application Name">
+  
+  <!-- Short description of the page (limit to 150 characters) -->
+  <meta name="description" content="A description of the page">
+  
+  <!-- Tells Google not to show the sitelinks search box -->
+  <meta name="google" content="nositelinkssearchbox">
+  
+  <!-- Tells Google not to provide a translation for this page -->
+  <meta name="google" content="notranslate">
+  
+  <!-- Verify ownership for Google Search Console -->
+  <meta name="google-site-verification" content="verification_token">
+  
+  <!-- Verify ownership for Yandex Webmasters -->
+  <meta name="yandex-verification" content="verification_token">
+  
+  <!-- Verify ownership for Bing Webmaster Center -->
+  <meta name="msvalidate.01" content="verification_token">
+  
+  <!-- Verify ownership for Alexa Console -->
+  <meta name="alexaVerifyID" content="verification_token">
+  
+  <!-- Verify ownership for Pinterest Console-->
+  <meta name="p:domain_verify" content="verification_token">
+  
+  <!-- Verify ownership for Norton Safe Web -->
+  <meta name="norton-safeweb-site-verification" content="verification_token">
+  
+  <!-- Short description of your site's subject -->
+  <meta name="subject" content="your website's subject">
+  
+  <!-- Gives a general age rating based on site content -->
+  <meta name="rating" content="general|mature|restricted|14 years|safe for kids">
+  
+  <!-- Allows control over how referrer information is passed -->
+  <!-- I recommend 2 values for new apps no-referrer|none-when-downgrade -->
+  <meta name="referrer" content="no-referrer">
+  
+  <!-- Disable automatic detection and formatting of possible phone numbers -->
+  <meta name="format-detection" content="telephone=no">
+  
+  <!-- Completely opt out of DNS prefetching by setting to 'off' -->
+  <!-- for more info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control -->
+  <meta http-equiv="x-dns-prefetch-control" content="off">
+  
+  <!-- Geo tags -->
+  <!-- applicable if site represents a physical location, like a shop, agency, ect. -->
+  <meta name="ICBM" content="latitude, longitude">
+  <meta name="geo.position" content="latitude;longitude">
+  <meta name="geo.region" content="country[-state]"><!-- Country code (ISO 3166-1): mandatory, state code (ISO 3166-2): optional; eg. content="US" / content="US-NY" -->
+  <meta name="geo.placename" content="city/town"><!-- eg. content="New York City" -->
+
+  <!-- 
+  ########## END: Base Feature Support ##########
+  -->
+
+
+  <!-- 
+  ########## Start: Meta Tags ##########
+  -->
+
+  <!-- %%%% iOS %%%%
+    1. https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3-SW1
+    2. https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariHTMLRef/Articles/MetaTags.html
+    3. https://developer.apple.com/ios/human-interface-guidelines/graphics/launch-screen/ 
+  -->
+  <meta name="apple-mobile-web-app-title" content="[Prudential Financial]"> <!-- launch icon title -->
+  <meta name="apple-mobile-web-app-capable" content="yes"> <!-- hides address bar and status bar => native application feel -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="[black-translucent|default|some-color]"> <!-- Only works if apple-mobile-web-app-capable is set -->
+  <meta name="format-detection" content="telephone=no">
+  <!-- Deep App linking -->
+  <meta name="apple-itunes-app" content="app-id=[APP-ID], app-argument=[http/url-sample.com]">
+
+  <!-- %%%% Google %%%% -->
+  <!-- Android -->
+  <meta name="theme-color" content="[#HEXCOLOR]">
+  <!-- Add to home screen; see https://developers.google.com/web/fundamentals/engage-and-retain/app-install-banners/ -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <!-- App Deep Linking -->
+  <meta name="google-play-app" content="app-id=[package-name]">
+  <!-- Native App Appearance -->
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- %%%% Windows %%%% -->
+  <!-- Pinned site < IE 11 (https://msdn.microsoft.com/en-us/library/dn255024(v=vs.85).aspx) -->
+  <meta name="application-name" content="[Prudential Financial]">
+  <meta name="msapplication-tooltip" content="[YOUR TOOLTIP HERE]">
+  <meta name="msapplication-starturl" content="[http://example.com/index.html?pinned=true]">
+  <meta name="msapplication-navbutton-color" content="[#HEXCOLOR]">
+  <meta name="msapplication-window" content="width=800;height=600">
+  <meta name="msapplication-task" content="name=[Task 1];action-uri=[http://host/Page1.html];icon-uri=[http://host/icon1.ico]">
+  <meta name="msapplication-task" content="name=[Task 2];action-uri=[http://microsoft.com/Page2.html];icon-uri=[http://host/icon2.ico]">
+  <meta name="msapplication-task-separator" content="1">
+  <meta name="msapplication-badge" value="frequency=[NUMBER_IN_MINUTES];polling-uri=[http://example.com/path/to/file.xml]">
+  <meta name="msapplication-TileColor" content="#FF3300">
+  <meta name="msapplication-TileImage" content="../assets/platform/windows/tile.jpg">
+  <!-- Pinned IE 11 Live Tiles (https://msdn.microsoft.com/en-us/library/bg183312(v=vs.85).aspx) -->
+  <meta name="msapplication-square70x70logo" content="../assets/platform/windows/tile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="../assets/platform/windows/tile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="../assets/platform/windows/tile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="../assets/platform/windows/tile-310x310.png" />
+
+  <meta name="msapplication-config" content="../assets/platform/windows/browserconfig.xml">
+  <!-- matches the 2 pinned site tasks above from msapplication-task tag -->
+  <meta name="msapplication-notification" content="frequency=[NUMBER_IN_SECONDS];polling-uri=[http://example.com/livetile];polling-uri2=[http://example.com/livetile2]">
+
+  <!-- Facebook Open Graph (static or dynamically set; if dynamic, pre-render, then serve) -->
+  <meta property="fb:app_id" content="123456789">
+  <meta property="og:url" content="https://example.com/page.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Content Title">
+  <meta property="og:image" content="https://example.com/image.jpg">
+  <meta property="og:description" content="Description Here">
+  <meta property="og:site_name" content="Site Name">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:author" content="">
+
+  <!-- Facebook Instant Articles (static or dynamically set; if dynamic, pre-render, then serve) -->
+  <meta property="op:markup_version" content="v1.0">
+  <!-- The style to be used for this article -->
+  <meta property="fb:article_style" content="myarticlestyle">
+
+  <!-- %%%% 3rd-Party Tool Tags Here %%%% -->
+
+  <meta name="description" content="[YOUR DESCRIPTION HERE]">
+  
+  <!-- 
+    ########## END: Meta Tags ##########
+  -->
+
+
+  <!-- 
+    ########## Start: Link Tags ##########
+  -->
+  <!-- UA directives -->
+  <!-- Origin that will be used to fetch resources, the UA "should" resolve as early as possible; https://www.w3.org/TR/resource-hints/#dns-prefetch -->
+  <link href="//some-origin.com" rel="dns-prefetch">
+  <!-- Initiate early connection (DNS, TCP handshake and optional TLS negotiation) to origin; https://www.w3.org/TR/resource-hints/#preconnect -->
+  <link href="https://some-origin.com" rel="preconnect">
+  <!-- Instructs origin to retrieve resource without blocking main thread; https://www.w3.org/TR/preload/  -->
+  <link href="https://some-origin.com/[webfonts|some-large-asset]" rel="preload" as="[font|audio|document|embed|fetch|image|object|script|style|tract|worker|video]" type="[MIME-TYPE]" media="[media-type|media-query]">
+
+  <!-- default icon -->
+  <link href="../assets/platform/favicon.ico" rel="icon" type="image/x-icon">
+
+  <!-- Facebook Instant Articles -->
+  <link href="[URL/TO/ARTICLE.HTML]" rel="canonical">
+
+  <!-- %%%% Windows %%%% -->
+  <!-- Windows IE11, Edge icons -->
+  <link href="../assets/platform/windows/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
+  <link href="../assets/platform/windows/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  <link href="../assets/platform/windows/favicon-96x96.png" rel="icon" type="image/png" sizes="96x96">
+  <!-- Windows Tile UI  -->
+  <!-- See root file assets/platform/windows/browserconfig.xml -->
+
+  <!-- %%%% iOS %%%% -->
+  <!-- Apple icons -->
+  <link href="../assets/platform/ios/apple-icon-120x120.png" rel="apple-touch-icon" type="image/png" sizes="120x120"> <!-- iPhone -->
+  <link href="../assets/platform/ios/apple-icon-152x152.png" rel="apple-touch-icon" type="image/png" sizes="152x152"> <!-- iPad, iPad mini -->
+  <link href="../assets/platform/ios/apple-icon-167x167.png" rel="apple-touch-icon" type="image/png" sizes="167x167"> <!-- iPad Pro -->
+  <link href="../assets/platform/ios/apple-icon-180x180.png" rel="apple-touch-icon" type="image/png" sizes="180x180"> <!-- iPhone -->
+  <!-- Related to iOS apple-itunes-app App deep linking above -->
+  <link href="ios-app://[APP-ID]/http/[url-sample.com]" rel="alternate">
+  <!-- For Safari pinned tabs; see https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html -->
+  <link href="../assets/platform/ios/safari-pinned-icon.svg" rel="mask-icon" type="image/svg+xml" color="[COLORNAME]">
+
+  <!-- %%%% Android/Chrome %%%% -->
+  <!-- Android icons -->
+  <link href="../assets/platform/android/android-icon-192x192.png" rel="icon" type="image/png" sizes="192x192"> <!-- home screen icon -->
+  <!-- Related to Android google-play-app App deep linking above -->
+  <link href="android-app://[package-name/http/url-sample.com]" rel="alternate">
+  <!-- Supported by Chrome Mobile (Android Only) + Opera; see https://developer.mozilla.org/en-US/docs/Web/Manifest -->
+  <link href="../assets/platform/site.manifest.json" rel="manifest">
+
+  <!-- Refer to a copyright statement -->
+  <link href="[URL/TO/COPYRIGHT.HTML]" rel="license">
+
+  <!-- 
+    ########## END: Link Tags ##########
+  -->
+
+  <!-- Scripts (generally, preload > async) 
+  <script src="https://origin.com/my-script.js" async|defer></script>
+  -->
+  <noscript></noscript>
+
+  <title></title>
+</head>
+<body>
+  <h1>Welcome: EcmaScript-Sass-Webpack-Starter</h1>
+  <div class="link-grp">
+    <a href="some-page-1.html">some-page-1</a>
+    <a href="some-page-2.html">some-page-2</a>
+  </div>
+  <div class="container"></div>
+  <hr/>
+  <div>For more output, see your console :)</div>
+</body>
+</html>

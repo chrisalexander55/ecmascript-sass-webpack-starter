@@ -1,11 +1,13 @@
 const path = require('path');
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const webpackCommon = require('./common.config');
 
 const env = require('../env');
-const proxyRules = require('../src/app/xhr/config');
+const proxyRules = require('../src/app/js/shared/proxy/config');
 
 // webpack plugins
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
@@ -61,20 +63,58 @@ module.exports = webpackMerge(webpackCommon, {
         NODE_ENV: "'development'"
       }
     }),
+
+    // ####### add specific entry chunks as script tags within respective HTML file ########
+    // welcome.html
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.resolve(__dirname, '../src/index.html'),
-      favicon: path.resolve(__dirname, '../src/assets/platform/favicon.ico')
+      template: path.resolve(__dirname, '../src/app/pages/welcome.html'),
+      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
+      chunks: ['welcome']
     }),
+    // some-page-1.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/pages/some-page-1.html'),
+      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
+      chunks: ['some-page-1']
+    }),
+    // some-page-2.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/pages/some-page-2.html'),
+      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
+      chunks: ['some-page-2']
+    }),
+    // ###############################
+
+    // Put common async (lazy) modules into a separate chunk!
+    // new CommonsChunkPlugin({
+    //   async: "common-lazy-[id].js", 
+    //   children: true, 
+    //   filename: "common-lazy-[id].js"
+    // }),
+
     new HotModuleReplacementPlugin(),
     new StyleLintPlugin({
       configFile: '.stylelintrc',
-      context: 'src/sass',
+      context: 'src/app/sass',
       files: '**/*.scss',
       failOnError: true,
       quiet: false,
       syntax: 'scss'
     }),
+
+    // Put modules common to all modules into a separate chunk!
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'common',
+    //   children: true,
+    //   minChunks: 2,
+    //   minChunks: Infinity
+    //   // filename: "common-[id]-[hash].js"
+    //   // filename: "common-[id]-[hash]"
+    // }),
+
     new DashboardPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: 'server',

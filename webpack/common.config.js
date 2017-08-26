@@ -4,24 +4,19 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 module.exports = {
 
   entry: {
-    'app': [
-      './src/app/bootstrap.js'
-    ],
-    'vendor': './src/app/vendor.js'
+    'vendor': './src/app/js/vendor.js',
+    'welcome': './src/app/js/welcome/bootstrap.js',
+    'some-page-1': './src/app/js/some-page-1/bootstrap.js',
+    'some-page-2': './src/app/js/some-page-2/bootstrap.js'
   },
 
   resolve: {
-
     extensions: ['.js', '.scss'],
-
     modules: ['node_modules']
-
   },
 
   module: {
-
     rules: [
-
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -46,10 +41,14 @@ module.exports = {
     ]
 
   },
-
   plugins: [
     new CommonsChunkPlugin({
-      name: ['app', 'vendor'],
+      name: [
+        'vendor',
+        'welcome',
+        'some-page-1', 
+        'some-page-2'
+      ],
       minChunks: Infinity
     })
   ]

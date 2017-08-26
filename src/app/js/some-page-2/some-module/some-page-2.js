@@ -1,4 +1,4 @@
-import * as styles from './App.scss';
+import * as styles from './some-page-2.scss';
 
 export class App {
 

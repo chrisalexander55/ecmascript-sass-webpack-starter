@@ -1,12 +1,12 @@
 .table {
-  box-shadow: #000 0 0 3px;
-  border-radius: 3px;
   padding: 20px;
+  border-radius: 3px;
+  box-shadow: #000 0 0 3px;
 
   caption {
+    padding: 5px 0;
     font-size: 1.2em;
     text-decoration: underline;
-    padding: 5px 0;
   }
 
   thead tr th {
