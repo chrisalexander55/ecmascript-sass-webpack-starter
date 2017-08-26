@@ -82,56 +82,38 @@ module.exports = webpackMerge(webpackCommon, {
   },
 
   plugins: [
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: path.resolve(__dirname, '../src/app/pages/welcome.html'),
-      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
-      minify: MINIFY_OPTS
-    }),
-
     // ####### add chunks as script tags within respective HTML file ########
     // welcome.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/welcome.html'),
       favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
-      chunks: ['welcome']
+      chunks: ['vendor', 'common', 'welcome'],
+      minify: MINIFY_OPTS
     }),
     // // some-page-1.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/some-page-1.html'),
       favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
-      chunks: ['some-page-1']
+      chunks: ['vendor', 'common', 'some-page-1'],
+      minify: MINIFY_OPTS
     }),
     // // some-page-2.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/some-page-2.html'),
       favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
-      chunks: ['some-page-2']
+      chunks: ['vendor', 'common', 'some-page-2'],
+      minify: MINIFY_OPTS
     }),
     // ###############################
 
-    //Put modules common to all modules into a separate chunk!
-    new CommonsChunkPlugin({
-      children: true,
-      minChunks: 3,
-      filename: "common-[id]-[hash]"
-    }),
-
-    // Put common async (lazy) modules into a separate chunk!
-    // new CommonsChunkPlugin({
-    //   async: "common-lazy-[id].js", 
-    //   children: true, 
-    //   filename: "common-lazy-[id].js"
-    // }),
-
     new CopyWebpackPlugin([
-      {from: path.resolve(__dirname, '../src/app/assets')}
-    ], {
-      ignore: ['welcome.html', 'favicon.ico']
-    }),
+      {
+        from: path.resolve(__dirname, '../src/app/assets')
+      }
+    ]),
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '..'),
       exclude: '.gitignore'

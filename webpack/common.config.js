@@ -1,5 +1,8 @@
+const Webpack = require('webpack');
+
 // webpack plugins
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 module.exports = {
 
@@ -42,15 +45,20 @@ module.exports = {
 
   },
   plugins: [
+    // Put modules common to all modules into a separate chunk!
+    new Webpack.optimize.CommonsChunkPlugin({
+      names: ["common", "vendor"]
+      // minChunks: 2,
+      // filename: "common-[id]-[hash]"
+    }),
+    // Put common async (lazy) modules into a separate chunk!
     new CommonsChunkPlugin({
-      name: [
-        'vendor',
-        'welcome',
-        'some-page-1', 
-        'some-page-2'
-      ],
-      minChunks: Infinity
+      async: "common-lazy-[id]-[hash].js", 
+      children: true
     })
+    // minify
+    // new UglifyJsPlugin()
+
   ]
 
 };
