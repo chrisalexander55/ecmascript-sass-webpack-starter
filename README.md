@@ -53,14 +53,14 @@ $ npm i
 After installation, you will see this directory structure (only key objects illustrated):
 
 ```bash
-|- webpack/
-|-src
-|  |- app
-|      |- assets/
-|      |- js/
-|      |- pages/
-|      |- sass/
-|      |- index.html
+webpack/
+src
+ |- app
+     |- assets/
+     |- js/
+     |- pages/
+     |- sass/
+     |- index.html
 ```
 
 ## Configuration
