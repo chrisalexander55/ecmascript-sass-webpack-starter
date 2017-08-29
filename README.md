@@ -17,18 +17,18 @@ This is a starter/boilerplate project for a web application requiring ECMAScript
 
 The project supports the following features:
 
+* Multiple SPA pages
 * ES (Babel and ESLint)
-* Webpack (3.X, dev-server)
-* Webpack Dashboard
-* Google Lighthouse performance/practice profiling
+* Webpack (3.X, dev-server, dashboard)
+* Google Lighthouse performance/best-practice profiling
 * Progressive Web Application (PWA) markup compliance
-* Docker Container
+* Docker Container (optional)
 
 ## Installation
 
-Windows platform users should install [GitBash](https://git-scm.com/downloads) before continuing.
+Windows platform users should install [GitBash](https://git-scm.com/downloads) before continuing so you can use Unix terminal commands.
 
-### Docker Container
+### Docker Container (Optional)
 
 If you haven't already done so, install [Docker](https://www.docker.com/) on you host OS. Windows <=7 users need to install [Docker Toolbox](https://www.docker.com/products/docker-toolbox). If you have any issues, hit-up the Docker forums or SO.
 
@@ -53,14 +53,22 @@ $ npm i
 After installation, you will see this directory structure (only key objects illustrated):
 
 ```bash
-webpack/
-src
- |- app
-     |- assets/
-     |- js/
-     |- pages/
-     |- sass/
-     |- index.html
+|- webpack/                        # webpack config dir
+|- src
+   |- app
+       |- assets
+       |   |- platform/            # icons + platform config dir
+       |- js
+       |   |- index/               # index modules dir
+       |   |- shared/              # shared modules dir
+       |   |- some-page-1/         # some-page-1 modules dir
+       |   |- some-page-2/         # some-page-2 modules dir
+       |- pages
+       |   |- some-page-1.html
+       |   |- some-page-2.html
+       |- sass
+       |   |- main.scss            # for global styles
+       |- index.html               # default page
 ```
 
 ## Configuration
@@ -72,26 +80,24 @@ $ npm run postinstall
 # edit env.js per your environment needs
 
 # 1. development
-# - edit src/app/xhr/config.js to hit resources you need 
+# - edit src/app/js/shared/proxy/config.js to hit API resources you need 
 
-# - starts up the webpack-dev-server from host OS + launches browser
+# 1a. starts up the webpack-dev-server from host OS + launches browser pointing to http://localhost:3000/index.html
 $ npm start:host
 
-# - starts up the weback-dev-server from container
+# 1b. starts up the weback-dev-server from container
+# on your host OS, open your favorite web browser and point to url http://localhost:3000
 $ npm start:container
 
-# lint your ecmascript, especially before builds or commits
+# 1c. lint your ecmascript, especially before builds or commits
 $ npm run precommit
-
-# On your host OS, open your favorite web browser and point to url 
-# http://localhost:3000
 
 # 2. production
 # outputs into dist/ directory
 $ npm run build
 ```
 
-Build directory structure will look like this after transpilation:
+Distribution directory structure will look like this after transpilation:
 
 ```bash
 dist
@@ -104,8 +110,7 @@ dist
 
 ## Built Out Header Element
 
-I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen way too often how 
-under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful! Once you open an html file, edit as needed.
+I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen way too often how under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful! Once you open an html file, edit as needed.
 
 > Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
 
@@ -121,7 +126,7 @@ Standard tags/attributes cover:
 
 ### Social Media Coverage
 
-If you need to share content tailored for social media platforms, the popular technically needy ecosystems  include:
+If you need to share content tailored for social media platforms, either statically or via a SPA page, the platforms covered include:
 
 * Facebook
 * Google
@@ -129,11 +134,11 @@ If you need to share content tailored for social media platforms, the popular te
 
 ### Progressive Web Application (PWA) Support
 
-Generally, developers are aware of the native JavaScript APIs and polyfills related to PWAs but most are not aware that markup also offers support and must be configured for an implementation.
+Generally, developers are aware of the native JavaScript APIs and polyfills related to PWAs but most are not aware that markup must also be configured for an valid and performant implementation.
 
 #### Platform Coverage
 
-Platform compliant meta tags/attributes covered are:
+Platform-specific meta tags/attributes covered include:
 
 * iOS
 * Android/Chrome
