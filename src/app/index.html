@@ -117,14 +117,14 @@
   <meta name="msapplication-task-separator" content="1">
   <meta name="msapplication-badge" value="frequency=[NUMBER_IN_MINUTES];polling-uri=[http://example.com/path/to/file.xml]">
   <meta name="msapplication-TileColor" content="#FF3300">
-  <meta name="msapplication-TileImage" content="../assets/platform/windows/tile.jpg">
+  <meta name="msapplication-TileImage" content="platform/windows/tile.jpg">
   <!-- Pinned IE 11 Live Tiles (https://msdn.microsoft.com/en-us/library/bg183312(v=vs.85).aspx) -->
-  <meta name="msapplication-square70x70logo" content="../assets/platform/windows/tile-70x70.png" />
-  <meta name="msapplication-square150x150logo" content="../assets/platform/windows/tile-150x150.png" />
-  <meta name="msapplication-wide310x150logo" content="../assets/platform/windows/tile-310x150.png" />
-  <meta name="msapplication-square310x310logo" content="../assets/platform/windows/tile-310x310.png" />
+  <meta name="msapplication-square70x70logo" content="platform/windows/tile-70x70.png" />
+  <meta name="msapplication-square150x150logo" content="platform/windows/tile-150x150.png" />
+  <meta name="msapplication-wide310x150logo" content="platform/windows/tile-310x150.png" />
+  <meta name="msapplication-square310x310logo" content="platform/windows/tile-310x310.png" />
 
-  <meta name="msapplication-config" content="../assets/platform/windows/browserconfig.xml">
+  <meta name="msapplication-config" content="platform/windows/browserconfig.xml">
   <!-- matches the 2 pinned site tasks above from msapplication-task tag -->
   <meta name="msapplication-notification" content="frequency=[NUMBER_IN_SECONDS];polling-uri=[http://example.com/livetile];polling-uri2=[http://example.com/livetile2]">
 
@@ -165,37 +165,37 @@
   <link href="https://some-origin.com/[webfonts|some-large-asset]" rel="preload" as="[font|audio|document|embed|fetch|image|object|script|style|tract|worker|video]" type="[MIME-TYPE]" media="[media-type|media-query]">
 
   <!-- default icon -->
-  <link href="../assets/platform/favicon.ico" rel="icon" type="image/x-icon">
+  <link href="platform/favicon.ico" rel="icon" type="image/x-icon">
 
   <!-- Facebook Instant Articles -->
   <link href="[URL/TO/ARTICLE.HTML]" rel="canonical">
 
   <!-- %%%% Windows %%%% -->
   <!-- Windows IE11, Edge icons -->
-  <link href="../assets/platform/windows/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
-  <link href="../assets/platform/windows/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
-  <link href="../assets/platform/windows/favicon-96x96.png" rel="icon" type="image/png" sizes="96x96">
+  <link href="platform/windows/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
+  <link href="platform/windows/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  <link href="platform/windows/favicon-96x96.png" rel="icon" type="image/png" sizes="96x96">
   <!-- Windows Tile UI  -->
-  <!-- See root file assets/platform/windows/browserconfig.xml -->
+  <!-- See root file platform/windows/browserconfig.xml -->
 
   <!-- %%%% iOS %%%% -->
   <!-- Apple icons -->
-  <link href="../assets/platform/ios/apple-icon-120x120.png" rel="apple-touch-icon" type="image/png" sizes="120x120"> <!-- iPhone -->
-  <link href="../assets/platform/ios/apple-icon-152x152.png" rel="apple-touch-icon" type="image/png" sizes="152x152"> <!-- iPad, iPad mini -->
-  <link href="../assets/platform/ios/apple-icon-167x167.png" rel="apple-touch-icon" type="image/png" sizes="167x167"> <!-- iPad Pro -->
-  <link href="../assets/platform/ios/apple-icon-180x180.png" rel="apple-touch-icon" type="image/png" sizes="180x180"> <!-- iPhone -->
+  <link href="platform/ios/apple-icon-120x120.png" rel="apple-touch-icon" type="image/png" sizes="120x120"> <!-- iPhone -->
+  <link href="platform/ios/apple-icon-152x152.png" rel="apple-touch-icon" type="image/png" sizes="152x152"> <!-- iPad, iPad mini -->
+  <link href="platform/ios/apple-icon-167x167.png" rel="apple-touch-icon" type="image/png" sizes="167x167"> <!-- iPad Pro -->
+  <link href="platform/ios/apple-icon-180x180.png" rel="apple-touch-icon" type="image/png" sizes="180x180"> <!-- iPhone -->
   <!-- Related to iOS apple-itunes-app App deep linking above -->
   <link href="ios-app://[APP-ID]/http/[url-sample.com]" rel="alternate">
   <!-- For Safari pinned tabs; see https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/pinnedTabs/pinnedTabs.html -->
-  <link href="../assets/platform/ios/safari-pinned-icon.svg" rel="mask-icon" type="image/svg+xml" color="[COLORNAME]">
+  <link href="platform/ios/safari-pinned-icon.svg" rel="mask-icon" type="image/svg+xml" color="[COLORNAME]">
 
   <!-- %%%% Android/Chrome %%%% -->
   <!-- Android icons -->
-  <link href="../assets/platform/android/android-icon-192x192.png" rel="icon" type="image/png" sizes="192x192"> <!-- home screen icon -->
+  <link href="platform/android/android-icon-192x192.png" rel="icon" type="image/png" sizes="192x192"> <!-- home screen icon -->
   <!-- Related to Android google-play-app App deep linking above -->
   <link href="android-app://[package-name/http/url-sample.com]" rel="alternate">
   <!-- Supported by Chrome Mobile (Android Only) + Opera; see https://developer.mozilla.org/en-US/docs/Web/Manifest -->
-  <link href="../assets/platform/site.manifest.json" rel="manifest">
+  <link href="platform/site.manifest.json" rel="manifest">
 
   <!-- Refer to a copyright statement -->
   <link href="[URL/TO/COPYRIGHT.HTML]" rel="license">
@@ -212,10 +212,10 @@
   <title></title>
 </head>
 <body>
-  <h1>Welcome: EcmaScript-Sass-Webpack-Starter</h1>
+  <h1>Index: EcmaScript-Sass-Webpack-Starter</h1>
   <div class="link-grp">
-    <a href="some-page-1.html">some-page-1</a>
-    <a href="some-page-2.html">some-page-2</a>
+    <a href="./pages/some-page-1.html">some-page-1</a>
+    <a href="./pages/some-page-2.html">some-page-2</a>
   </div>
   <div class="container"></div>
   <hr/>

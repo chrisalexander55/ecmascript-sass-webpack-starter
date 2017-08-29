@@ -1,7 +1,7 @@
 const path = require('path');
 const webpackMerge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
-const webpackCommon = require('./common.config');
+const webpackCommon = require('./prod.common.config');
 
 // webpack plugins
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
@@ -34,9 +34,8 @@ module.exports = webpackMerge(webpackCommon, {
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: '[name]-[hash].min.js',
-    sourceMapFilename: '[name]-[hash].map',
-    chunkFilename: '[id]-[chunkhash].js'
+    filename: 'js/[name]-[chunkhash].min.js',
+    sourceMapFilename: 'js/[name]-[chunkhash].map'
   },
 
   module: {
@@ -83,47 +82,54 @@ module.exports = webpackMerge(webpackCommon, {
 
   plugins: [
     // ####### add chunks as script tags within respective HTML file ########
-    // welcome.html
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: path.resolve(__dirname, '../src/app/pages/welcome.html'),
-      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
-      chunks: ['vendor', 'common', 'welcome'],
-      minify: MINIFY_OPTS
-    }),
-    // // some-page-1.html
+    // some-page-1.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/some-page-1.html'),
-      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
       chunks: ['vendor', 'common', 'some-page-1'],
-      minify: MINIFY_OPTS
+      minify: MINIFY_OPTS,
+      filename: "pages/some-page-1.html"
     }),
-    // // some-page-2.html
+    // some-page-2.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/some-page-2.html'),
-      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
       chunks: ['vendor', 'common', 'some-page-2'],
-      minify: MINIFY_OPTS
+      minify: MINIFY_OPTS,
+      filename: "pages/some-page-2.html"
+    }),
+    // index.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/index.html'),
+      chunks: ['vendor', 'common', 'index'],
+      minify: MINIFY_OPTS,
+      filename: "index.html"
     }),
     // ###############################
 
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../src/app/assets')
-      }
-    ]),
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '..'),
       exclude: '.gitignore'
     }),
+    new CopyWebpackPlugin([
+        {
+          from: path.resolve(__dirname, '../src/app/assets')
+        }
+      ]
+      // , {
+      //   ignore: [
+      //     'js/',
+      //     'sass/'
+      //   ]
+      // }
+    ),
     new DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
       }
     }),
-    new ExtractTextPlugin('[name]-[chunkhash].min.css'),
+    new ExtractTextPlugin('css/[name]-[chunkhash].min.css'),
     new UglifyJsPlugin({
       compressor: {
         screw_ie8: true,
@@ -150,7 +156,7 @@ module.exports = webpackMerge(webpackCommon, {
       options: {
         context: '/',
         sassLoader: {
-          includePaths: [path.resolve(__dirname, '../src/app/js')]
+          includePaths: [path.resolve(__dirname, '../src/app')]
         }
       }
     }),

@@ -38,9 +38,10 @@
   ],
   "scripts": {
     "postinstall": "cp env.example.js env.js",
-    "start": "webpack-dashboard -- webpack-dev-server --host 0.0.0.0 --config webpack/dev.config.js --watch --open-page \"/welcome.html\"",
+    "start:container": "webpack-dashboard -- webpack-dev-server --host 0.0.0.0 --config webpack/dev.config.js --watch",
+    "start:host": "webpack-dashboard -- webpack-dev-server --config webpack/dev.config.js --watch --open-page \"index.html\"",
+    "lighthouse:host": "lighthouse --output-path=./perf/lighthouse-report.json --output json --save-artifacts",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
-    "perf-profile": "lighthouse --output-path=./perf/lighthouse-report.json --output json --save-artifacts",
     "precommit": "eslint src/app/js",
     "precommit-fix": "eslint src/app/js --fix"
   },
@@ -67,6 +68,7 @@
     "html-webpack-plugin": "^2.29.0",
     "json-loader": "^0.5.4",
     "lighthouse": "^2.4.0",
+    "name-all-modules-plugin": "^1.0.1",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
     "sass-loader": "^6.0.6",

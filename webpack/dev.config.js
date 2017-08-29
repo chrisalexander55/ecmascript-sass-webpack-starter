@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const webpackCommon = require('./common.config');
+const webpackCommon = require('./dev.common.config');
 
 const env = require('../env');
 const proxyRules = require('../src/app/js/shared/proxy/config');
@@ -22,7 +22,7 @@ module.exports = webpackMerge(webpackCommon, {
     path: path.resolve(__dirname, '../src/dist'),
     filename: '[name].js',
     sourceMapFilename: '[name].map',
-    chunkFilename: '[id]-chunk.js',
+    // chunkFilename: '[id]-chunk.js',
     publicPath: '/'
   },
 
@@ -64,37 +64,36 @@ module.exports = webpackMerge(webpackCommon, {
     }),
 
     // ####### add specific entry chunks as script tags within respective HTML file ########
-    // welcome.html
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: path.resolve(__dirname, '../src/app/pages/welcome.html'),
-      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
-      // filename: 'welcome-[id]-[hash]',
-      hash: true,
-      chunks: ['vendor', 'common', 'welcome']
-    }),
     // some-page-1.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/some-page-1.html'),
-      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
-      chunks: ['vendor', 'common', 'some-page-1']
+      chunks: ['vendor', 'common', 'some-page-1'],
+      filename: "some-page-1.html"
     }),
     // some-page-2.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/some-page-2.html'),
-      favicon: path.resolve(__dirname, '../src/app/assets/platform/favicon.ico'),
-      chunks: ['vendor', 'common', 'some-page-2']
+      chunks: ['vendor', 'common', 'some-page-2'],
+      filename: "some-page-2.html"
+    }),
+    // index.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/index.html'),
+      chunks: ['vendor', 'common', 'index'],
+
+      // filename: "index.html"
     }),
     // ###############################
 
     new HotModuleReplacementPlugin(),
     new StyleLintPlugin({
       configFile: '.stylelintrc',
-      context: 'src/app/sass',
+      context: 'src',
       files: '**/*.scss',
-      failOnError: true,
+      failOnError: false,
       quiet: false,
       syntax: 'scss'
     }),
@@ -117,7 +116,7 @@ module.exports = webpackMerge(webpackCommon, {
   devServer: {
     host: env.devServer.host || 'localhost',
     port: env.devServer.port || 3000,
-    contentBase: path.resolve(__dirname, '../src'),
+    contentBase: path.resolve(__dirname, '../src/app'),
     watchContentBase: true,
     compress: true,
     hot: true,

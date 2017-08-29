@@ -2,7 +2,7 @@
 import '../../sass/main.scss';
 
 // classes you want to use immediately
-import {App} from './some-module/welcome';
+import {App} from './some-module/start';
 import {Http} from '../shared/rest/Http';
 
 /**
@@ -25,7 +25,7 @@ function main() {
   http.get('/node-0/search/repositories?o=desc&q=es6&s=stars&type=Repositories&utf8=✓').then((res) => {
     const data = JSON.parse(res);
     app.render(data);
-    document.title = 'Welcome Started';
+    document.title = 'Index Started';
   });
 
   // send request to npmjs.org

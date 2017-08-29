@@ -1,4 +1,4 @@
-import * as styles from './welcome.scss';
+import * as styles from './start.scss';
 
 export class App {
 

@@ -53,10 +53,14 @@ $ npm i
 After installation, you will see this directory structure (only key objects illustrated):
 
 ```bash
-|- src
-    |- assets
-    |   |- platforms
-    |- app
+|-src
+|  |- app
+|      |- assets/
+|      |- js/
+|      |- pages/
+|      |- sass/
+|      |- index.html
+|- webpack/
 ```
 
 ## Configuration
@@ -69,8 +73,12 @@ $ npm run postinstall
 
 # 1. development
 # - edit src/app/xhr/config.js to hit resources you need 
-# - starts up the webpack-dev-server
-$ npm start
+
+# - starts up the webpack-dev-server from host OS + launches browser
+$ npm start:host
+
+# - starts up the weback-dev-server from container
+$ npm start:container
 
 # lint your ecmascript, especially before builds or commits
 $ npm run precommit
@@ -83,10 +91,21 @@ $ npm run precommit
 $ npm run build
 ```
 
+Build directory structure will look like this after transpilation:
+
+```bash
+dist
+ |- css/
+ |- js/
+ |- pages/
+ |- platform/
+ |- index.html
+```
+
 ## Built Out Header Element
 
 I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen way too often how 
-under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful! Once you open index.html, edit as needed.
+under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful! Once you open an html file, edit as needed.
 
 > Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
 
