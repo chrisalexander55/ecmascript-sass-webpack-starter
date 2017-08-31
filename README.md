@@ -18,10 +18,10 @@ This is a starter/boilerplate project for a web application requiring ECMAScript
 The project supports the following features:
 
 * Multiple SPA pages
-* ES (Babel and ESLint)
+* EcmaScript (Babel and ESLint)
 * Webpack (3.X, dev-server, dashboard)
-* Google Lighthouse performance/best-practice profiling
-* Progressive Web Application (PWA) markup compliance
+* Google Lighthouse (performance/best-practice profiling)
+* Progressive Web Application (PWA) compliance
 * Docker Container (optional)
 
 ## Installation

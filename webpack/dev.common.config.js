@@ -11,8 +11,8 @@ module.exports = {
   entry: {
     'vendor': './src/app/js/vendor.js',
     'index': './src/app/js/index/bootstrap.js',
-    'some-page-1': './src/app/js/some-page-1/bootstrap.js',
-    'some-page-2': './src/app/js/some-page-2/bootstrap.js'
+    'pages/some-page-1': './src/app/js/some-page-1/bootstrap.js',
+    'pages/some-page-2': './src/app/js/some-page-2/bootstrap.js'
   },
 
   resolve: {
@@ -52,14 +52,12 @@ module.exports = {
     // Put modules common to all modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
       names: ["common", "vendor"]
-      // filename: 'common-[hash].js'
     }),
     // Put common async (lazy) modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
       async: "common-lazy-[hash].js", 
       children: true
     })
-
   ]
 
 };

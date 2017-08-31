@@ -22,7 +22,6 @@ module.exports = webpackMerge(webpackCommon, {
     path: path.resolve(__dirname, '../src/dist'),
     filename: '[name].js',
     sourceMapFilename: '[name].map',
-    // chunkFilename: '[id]-chunk.js',
     publicPath: '/'
   },
 
@@ -53,7 +52,6 @@ module.exports = webpackMerge(webpackCommon, {
         ]
       }
     ]
-
   },
 
   plugins: [
@@ -117,6 +115,7 @@ module.exports = webpackMerge(webpackCommon, {
     host: env.devServer.host || 'localhost',
     port: env.devServer.port || 3000,
     contentBase: path.resolve(__dirname, '../src/app'),
+    publicPath: '/js/',
     watchContentBase: true,
     compress: true,
     hot: true,
