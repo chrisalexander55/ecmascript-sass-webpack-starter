@@ -2,14 +2,12 @@ const path = require('path');
 const Webpack = require('webpack');
 
 // webpack plugins
-const NameAllModulesPlugin = require('name-all-modules-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 module.exports = {
 
   entry: {
-    'vendor': './src/app/js/vendor.js',
+    'js/vendor': './src/app/js/vendor.js',
     'index': './src/app/js/index/bootstrap.js',
     'pages/some-page-1': './src/app/js/some-page-1/bootstrap.js',
     'pages/some-page-2': './src/app/js/some-page-2/bootstrap.js'
@@ -23,11 +21,21 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: "pre",
+        test: /src\/app\/\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+        options: {
+          outputReport: {
+            filePath: '../../es-style/es-style-errors.xml'
+          }
+        }
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        loader: "babel-loader",
       },
-
       {
         test: /\.json$/,
         loader: 'json'
@@ -51,12 +59,16 @@ module.exports = {
     }),
     // Put modules common to all modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
-      names: ["common", "vendor"]
+      names: ["common", "vendor"],
+      name: 'common',
+      filename: 'js/common.js',
+      minChunks: 3
     }),
     // Put common async (lazy) modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
-      async: "common-lazy-[hash].js", 
-      children: true
+      async: "js/common-lazy.js", 
+      children: true,
+      minChunks: 2
     })
   ]
 

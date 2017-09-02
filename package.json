@@ -40,10 +40,9 @@
     "postinstall": "cp env.example.js env.js",
     "start:container": "webpack-dashboard -- webpack-dev-server --host 0.0.0.0 --config webpack/dev.config.js --watch",
     "start:host": "webpack-dashboard -- webpack-dev-server --config webpack/dev.config.js --watch --open-page \"index.html\"",
-    "lighthouse:host": "lighthouse --output-path=./perf/lighthouse-report.json --output json --save-artifacts",
-    "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
-    "precommit": "eslint src/app/js",
-    "precommit-fix": "eslint src/app/js --fix"
+    "lighthouse:host": "lighthouse 'http://localhost:3000' --port 3002 --output-path=./perf/lighthouse-report.json --output json --save-artifacts",
+    "build:host": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
+    "build:container": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0"

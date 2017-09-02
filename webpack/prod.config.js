@@ -116,13 +116,12 @@ module.exports = webpackMerge(webpackCommon, {
         {
           from: path.resolve(__dirname, '../src/app/assets')
         }
-      ]
-      // , {
-      //   ignore: [
-      //     'js/',
-      //     'sass/'
-      //   ]
-      // }
+      ], {
+        ignore: [
+          'js/',
+          'sass/'
+        ]
+      }
     ),
     new DefinePlugin({
       'process.env': {
@@ -142,6 +141,21 @@ module.exports = webpackMerge(webpackCommon, {
         comments: false,
         screw_ie8: true
       },
+      sourceMap: true
+    }),
+    new UglifyJsPlugin({
+      compressor: {
+        screw_ie8: true,
+        warnings: false
+      },
+      mangle: {
+        screw_ie8: true
+      },
+      output: {
+        comments: false,
+        screw_ie8: true
+      },
+      test: /common-/,
       sourceMap: true
     }),
     new StyleLintPlugin({

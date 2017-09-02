@@ -22,26 +22,36 @@ module.exports = {
 
   module: {
     rules: [
+
+      {
+        enforce: "pre",
+        test: /src\/app\/\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+        options: {
+          outputReport: {
+            filePath: '../../es-style/es-style-errors.xml'
+          }
+        }
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        loader: "babel-loader",
       },
-
       {
         test: /\.json$/,
         loader: 'json'
       },
-
       {
         test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,
         loader: 'file',
       }
-
     ]
 
   },
   plugins: [
+    
     new Webpack.NamedModulesPlugin(),
     new Webpack.NamedChunksPlugin((chunk) => {
         if (chunk.name) {
@@ -52,7 +62,8 @@ module.exports = {
     // Put modules common to all modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
       names: ["common", "vendor"],
-      filename: 'js/common-[chunkhash].js'
+      filename: 'js/common-[chunkhash].js',
+      minChunks: 3
     }),
     // Put common async (lazy) modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({

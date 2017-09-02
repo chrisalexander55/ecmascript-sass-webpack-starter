@@ -8,6 +8,7 @@ const proxyRules = require('../src/app/js/shared/proxy/config');
 
 // webpack plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -17,9 +18,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = webpackMerge(webpackCommon, {
 
   devtool: 'inline-source-map',
-
   output: {
-    path: path.resolve(__dirname, '../src/dist'),
+    path: path.resolve(__dirname, '../src/app'),
     filename: '[name].js',
     sourceMapFilename: '[name].map',
     publicPath: '/'
@@ -67,22 +67,21 @@ module.exports = webpackMerge(webpackCommon, {
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/some-page-1.html'),
       chunks: ['vendor', 'common', 'some-page-1'],
-      filename: "some-page-1.html"
+      filename: "pages/some-page-1.html"
     }),
     // some-page-2.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/some-page-2.html'),
       chunks: ['vendor', 'common', 'some-page-2'],
-      filename: "some-page-2.html"
+      filename: "pages/some-page-2.html"
     }),
     // index.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/index.html'),
       chunks: ['vendor', 'common', 'index'],
-
-      // filename: "index.html"
+      filename: "index.html"
     }),
     // ###############################
 
@@ -114,8 +113,7 @@ module.exports = webpackMerge(webpackCommon, {
   devServer: {
     host: env.devServer.host || 'localhost',
     port: env.devServer.port || 3000,
-    contentBase: path.resolve(__dirname, '../src/app'),
-    publicPath: '/js/',
+    contentBase: [ path.resolve(__dirname, '../src') ],
     watchContentBase: true,
     compress: true,
     hot: true,
