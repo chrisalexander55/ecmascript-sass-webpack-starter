@@ -82,7 +82,7 @@ $ npm run postinstall
 # edit env.js per your environment needs
 
 # 1. development
-# - edit src/app/js/shared/proxy/config.js to hit API resources you need 
+# - edit src/app/js/shared/proxy/config.js to hit API resources you need
 
 # 1a. starts up the webpack-dev-server from host OS + launches browser pointing to http://localhost:3000/index.html
 $ npm start:host
@@ -90,9 +90,6 @@ $ npm start:host
 # 1b. starts up the weback-dev-server from container
 # on your host OS, open your favorite web browser and point to url http://localhost:3000
 $ npm start:container
-
-# 1c. lint your ecmascript, especially before builds or commits
-$ npm run precommit
 
 # 2. production
 # outputs into dist/ directory
