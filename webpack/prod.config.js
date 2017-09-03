@@ -35,7 +35,8 @@ module.exports = webpackMerge(webpackCommon, {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'js/[name]-[chunkhash].min.js',
-    sourceMapFilename: 'js/[name]-[chunkhash].map'
+    sourceMapFilename: 'js/[name]-[chunkhash].map',
+    publicPath: '/'
   },
 
   module: {
