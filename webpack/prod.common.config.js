@@ -4,13 +4,14 @@ const Webpack = require('webpack');
 // webpack plugins
 const NameAllModulesPlugin = require('name-all-modules-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
+// const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
 
 module.exports = {
 
   entry: {
     'vendor': './src/app/js/vendor.js',
     'index': './src/app/js/index/bootstrap.js',
+    'not-found': './src/app/js/not-found/bootstrap.js',
     'some-page-1': './src/app/js/some-page-1/bootstrap.js',
     'some-page-2': './src/app/js/some-page-2/bootstrap.js'
   },
@@ -59,6 +60,7 @@ module.exports = {
         }
         return chunk.modules.map(m => path.relative(m.context, m.request)).join("_");
     }),
+    // vendor module
     new Webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       filename: "js/vendor-[chunkhash].min.js",
@@ -66,7 +68,7 @@ module.exports = {
     }),
     // Put modules common to all modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
-      names: ["common"],
+      name: "common",
       filename: 'js/common-[chunkhash].min.js',
       minChunks: 3
     }),

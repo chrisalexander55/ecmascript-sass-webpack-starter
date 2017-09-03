@@ -11,6 +11,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
+const StyleLoader = require('style-loader');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -76,6 +77,13 @@ module.exports = webpackMerge(webpackCommon, {
       chunks: ['vendor', 'common', 'some-page-2'],
       filename: "pages/some-page-2.html"
     }),
+    // not-found.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/not-found.html'),
+      chunks: ['vendor', 'common', 'not-found'],
+      filename: "not-found.html"
+    }),
     // index.html
     new HtmlWebpackPlugin({
       inject: true,
@@ -85,7 +93,6 @@ module.exports = webpackMerge(webpackCommon, {
     }),
     // ###############################
 
-    new HotModuleReplacementPlugin(),
     new StyleLintPlugin({
       configFile: '.stylelintrc',
       context: 'src',
@@ -113,7 +120,7 @@ module.exports = webpackMerge(webpackCommon, {
   devServer: {
     host: env.devServer.host || 'localhost',
     port: env.devServer.port || 3000,
-    contentBase: [ path.resolve(__dirname, '../src') ],
+    contentBase: [ path.resolve(__dirname, '../src/app') ],
     watchContentBase: true,
     compress: true,
     hot: true,

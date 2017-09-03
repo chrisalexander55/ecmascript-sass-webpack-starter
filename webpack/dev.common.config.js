@@ -3,12 +3,14 @@ const Webpack = require('webpack');
 
 // webpack plugins
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const NameAllModulesPlugin = require('name-all-modules-plugin');
 
 module.exports = {
 
   entry: {
     'js/vendor': './src/app/js/vendor.js',
     'index': './src/app/js/index/bootstrap.js',
+    'not-found': './src/app/js/not-found/bootstrap.js',
     'pages/some-page-1': './src/app/js/some-page-1/bootstrap.js',
     'pages/some-page-2': './src/app/js/some-page-2/bootstrap.js'
   },
@@ -22,7 +24,7 @@ module.exports = {
     rules: [
       {
         enforce: "pre",
-        test: /src\/app\/\.js$/,
+        test: /\.js$/, // /src\/app\/\.js$/,
         exclude: /node_modules/,
         loader: "eslint-loader",
         options: {
@@ -57,18 +59,22 @@ module.exports = {
         }
         return chunk.modules.map(m => path.relative(m.context, m.request)).join("_");
     }),
+    // vendor module
+    new Webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      filename: "js/vendor.js",
+      minChunks: Infinity,
+    }),
     // Put modules common to all modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
-      names: ["common", "vendor"],
-      name: 'common',
+      name: "common",
       filename: 'js/common.js',
-      minChunks: 3
+      minChunks: 2
     }),
     // Put common async (lazy) modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
       async: "js/common-lazy.js", 
-      children: true,
-      minChunks: 2
+      children: true
     })
   ]
 

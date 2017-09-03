@@ -12,6 +12,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const StyleLoader = require('style-loader');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -86,7 +87,7 @@ module.exports = webpackMerge(webpackCommon, {
     // assert scss style rules
     new StyleLintPlugin({
       configFile: '.stylelintrc',
-      context: 'src/sass',
+      context: 'src/app',
       files: '**/*.scss',
       failOnError: true,
       quiet: false,
@@ -134,12 +135,14 @@ module.exports = webpackMerge(webpackCommon, {
       minify: MINIFY_OPTS,
       filename: "index.html"
     }),
-    // ###############################
-    // new DefinePlugin({
-    //   'process.env': {
-    //     NODE_ENV: '"production"'
-    //   }
-    // }),
+    // not-found.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/not-found.html'),
+      chunks: ['vendor', 'common', 'not-found'],
+      minify: MINIFY_OPTS,
+      filename: "not-found.html"
+    }),
     new ExtractTextPlugin('css/[name]-[chunkhash].min.css'),
     new UglifyJsPlugin({
       compressor: {
