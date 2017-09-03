@@ -59,15 +59,20 @@ module.exports = {
         }
         return chunk.modules.map(m => path.relative(m.context, m.request)).join("_");
     }),
+    new Webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+      filename: "js/vendor-[chunkhash].min.js",
+      minChunks: Infinity,
+    }),
     // Put modules common to all modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
-      names: ["common", "vendor"],
-      filename: 'js/common-[chunkhash].js',
+      names: ["common"],
+      filename: 'js/common-[chunkhash].min.js',
       minChunks: 3
     }),
     // Put common async (lazy) modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
-      async: "js/common-lazy-[chunkhash].js", 
+      async: "js/common-lazy-[chunkhash].min.js", 
       children: true
     })
 

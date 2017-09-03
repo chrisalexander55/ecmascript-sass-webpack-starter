@@ -57,20 +57,21 @@ module.exports = webpackMerge(webpackCommon, {
               }
             },
             {
+              loader: 'sass-loader',
+              options: {
+                includePaths: [path.resolve(__dirname, '../src/app')],
+                outputStyle: 'expanded',
+                sourceMap: true,
+                sourceMapContents: true
+              }
+            },
+            {
               loader: 'postcss-loader',
               options: {
                 config: {
                   path: path.resolve(__dirname, 'postcss.config.js')
                 },
                 sourceMap: true
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                outputStyle: 'expanded',
-                sourceMap: true,
-                sourceMapContents: true
               }
             }
           ]
@@ -81,6 +82,32 @@ module.exports = webpackMerge(webpackCommon, {
   },
 
   plugins: [
+    // assert scss style rules
+    new StyleLintPlugin({
+      configFile: '.stylelintrc',
+      context: 'src/sass',
+      files: '**/*.scss',
+      failOnError: true,
+      quiet: false,
+      syntax: 'scss'
+    }),
+    // clean-out build destination dist/
+    new CleanWebpackPlugin(['dist'], {
+      root: path.resolve(__dirname, '..'),
+      exclude: '.gitignore'
+    }),
+    // copy needed assets only into dist/
+    new CopyWebpackPlugin([
+        {
+          from: path.resolve(__dirname, '../src/app/assets')
+        }
+      ], {
+        ignore: [
+          'js/',
+          'sass/'
+        ]
+      }
+    ),
     // ####### add chunks as script tags within respective HTML file ########
     // some-page-1.html
     new HtmlWebpackPlugin({
@@ -107,27 +134,11 @@ module.exports = webpackMerge(webpackCommon, {
       filename: "index.html"
     }),
     // ###############################
-
-    new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname, '..'),
-      exclude: '.gitignore'
-    }),
-    new CopyWebpackPlugin([
-        {
-          from: path.resolve(__dirname, '../src/app/assets')
-        }
-      ], {
-        ignore: [
-          'js/',
-          'sass/'
-        ]
-      }
-    ),
-    new DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
+    // new DefinePlugin({
+    //   'process.env': {
+    //     NODE_ENV: '"production"'
+    //   }
+    // }),
     new ExtractTextPlugin('css/[name]-[chunkhash].min.css'),
     new UglifyJsPlugin({
       compressor: {
@@ -142,37 +153,6 @@ module.exports = webpackMerge(webpackCommon, {
         screw_ie8: true
       },
       sourceMap: true
-    }),
-    new UglifyJsPlugin({
-      compressor: {
-        screw_ie8: true,
-        warnings: false
-      },
-      mangle: {
-        screw_ie8: true
-      },
-      output: {
-        comments: false,
-        screw_ie8: true
-      },
-      test: /common-/,
-      sourceMap: true
-    }),
-    new StyleLintPlugin({
-      configFile: '.stylelintrc',
-      context: 'src/sass',
-      files: '**/*.scss',
-      failOnError: true,
-      quiet: false,
-      syntax: 'scss'
-    }),
-    new LoaderOptionsPlugin({
-      options: {
-        context: '/',
-        sassLoader: {
-          includePaths: [path.resolve(__dirname, '../src/app')]
-        }
-      }
     }),
     new BundleAnalyzerPlugin({
       analyzerMode: 'server',
