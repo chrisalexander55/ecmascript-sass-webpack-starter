@@ -1,7 +1,7 @@
 const path = require('path');
 const webpackMerge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
-const webpackCommon = require('./common.config');
+const webpackCommon = require('./prod.common.config');
 
 // webpack plugins
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
