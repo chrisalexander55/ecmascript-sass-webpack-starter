@@ -148,7 +148,7 @@ Platform-specific meta tags/attributes covered include:
 
 #### Template
 
-Here is the recommended header element that can be cut-n-pasted and edited to fit your needs.
+Here is the recommended header element that can be cut-n-pasted and edited to fit your needs, full/partial SPA or non-SPA.
 
 ```html
 <head>
@@ -162,7 +162,7 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- 
-    ########## START: Base Feature Support ##########
+    ########## START: Tag Base Feature Support ##########
    -->
   
   <!-- security related -->
@@ -226,12 +226,12 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
   <meta name="geo.placename" content="city/town"><!-- eg. content="New York City" -->
 
   <!-- 
-  ########## END: Base Feature Support ##########
+  ########## END: Tag Base Feature Support ##########
   -->
 
 
   <!-- 
-  ########## Start: Meta Tags ##########
+  ########## Start: Tag Platform Feature Support ##########
   -->
 
   <!-- %%%% iOS %%%%
@@ -300,12 +300,12 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
   <meta name="description" content="[YOUR DESCRIPTION HERE]">
   
   <!-- 
-    ########## END: Meta Tags ##########
+    ########## END: Tag Platform Feature Support ##########
   -->
 
 
   <!-- 
-    ########## Start: Link Tags ##########
+    ########## Start: Links + Platform Features ##########
   -->
   <!-- UA directives -->
   <!-- Origin that will be used to fetch resources, the UA "should" resolve as early as possible; https://www.w3.org/TR/resource-hints/#dns-prefetch -->
@@ -352,7 +352,7 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
   <link href="[URL/TO/COPYRIGHT.HTML]" rel="license">
 
   <!-- 
-    ########## END: Link Tags ##########
+    ########## END: Links + Platform Features ##########
   -->
 
   <!-- Scripts (generally, preload > async) 
