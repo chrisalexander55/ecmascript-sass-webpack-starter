@@ -7,13 +7,11 @@
 [![GitHub issues](https://img.shields.io/github/issues/chrisalexander55/ecmascript-sass-webpack-starter.svg)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/chrisalexander55/ecmascript-sass-webpack-starter.svg)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/pulls)
 
-> Currently this Master branch dev configuration is broken. See [https://github.com/webpack/webpack-dev-server/issues/1067](https://github.com/webpack/webpack-dev-server/issues/1067) and [https://github.com/jantimon/html-webpack-plugin/issues/665](https://github.com/jantimon/html-webpack-plugin/issues/665) for the details. Help or a PR would be greatly appreciated. Production build is working and can be copied and tweaked to support your dev workflow. Hopefully, all will be resolved soon.
-
 ## Overview
 
 This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass - optionally served from a lightly configured Docker container. The project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing complexity of today's Franken-frameworks.
 
-> This repository is inspired and evolved from [micooz/es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter).
+> This repository is inspired from [micooz/es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter).
 
 ## Features
 
