@@ -9,16 +9,17 @@
 
 ## Overview
 
-This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass - optionally served from a lightly configured Docker container. The project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing complexity of today's Franken-frameworks.
+This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass - optionally served from a lightly configured Docker container. The project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing bloat and complexity of today's Franken-frameworks.
 
 > This repository is inspired from [micooz/es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter).
 
 ## Features
 
-The project supports the following features:
+The project supports the following "out-of-box" features:
 
-* Multiple SPA pages
+* Multi-Page SPAs
 * EcmaScript (Babel and ESLint)
+* SASS (4.X, linting)
 * Webpack (3.X, dashboard, dev-server)
 * Google Lighthouse (performance/best-practice profiling)
 * Progressive Web Application (PWA) compliance
@@ -50,7 +51,7 @@ $ cd ecmascript-sass-webpack-starter
 $ npm i
 ```
 
-After installation, you will see this directory structure (only key objects illustrated):
+After installation, you will see this directory structure:
 
 ```bash
 |- webpack/                        # webpack config dir
@@ -69,6 +70,8 @@ After installation, you will see this directory structure (only key objects illu
        |- sass
        |   |- main.scss            # for global styles
        |- index.html               # default page
+       |- not-found.html           # 404
+       |- not-supported.html       # browser doesn't meet required features
 ```
 
 ## Configuration
@@ -103,9 +106,11 @@ dist
  |- pages/
  |- platform/
  |- index.html
+ |- not-found.html
+ |- not-supported.html
 ```
 
-## Built Out Header Element
+## Header Element
 
 I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen way too often how under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful! Once you open an html file, edit as needed.
 

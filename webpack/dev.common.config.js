@@ -7,6 +7,7 @@ module.exports = {
     'vendor': './src/app/js/vendor.js',
     'index': './src/app/js/index/bootstrap.js',
     'not-found': './src/app/js/not-found/bootstrap.js',
+    'not-supported': './src/app/js/not-supported/bootstrap.js',
     'some-page-1': './src/app/js/some-page-1/bootstrap.js',
     'some-page-2': './src/app/js/some-page-2/bootstrap.js'
   },

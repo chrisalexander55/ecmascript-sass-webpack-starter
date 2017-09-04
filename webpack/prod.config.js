@@ -143,6 +143,14 @@ module.exports = webpackMerge(webpackCommon, {
       minify: MINIFY_OPTS,
       filename: "not-found.html"
     }),
+    // not-supported.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/not-supported.html'),
+      chunks: ['vendor', 'common', 'not-supported'],
+      minify: MINIFY_OPTS,
+      filename: "not-supported.html"
+    }),
     new ExtractTextPlugin('css/[name]-[chunkhash].min.css'),
     new UglifyJsPlugin({
       compressor: {

@@ -91,6 +91,13 @@ module.exports = webpackMerge(webpackCommon, {
         chunks: ['vendor', 'common', 'not-found'],
         filename: "not-found.html"
     }),
+    // not-supported.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/not-supported.html'),
+      chunks: ['vendor', 'common', 'not-supported'],
+      filename: "not-supported.html"
+  }),
     // index.html
     new HtmlWebpackPlugin({
       inject: true,
