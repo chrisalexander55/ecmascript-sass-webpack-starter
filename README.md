@@ -64,6 +64,8 @@ After installation, you will see this directory structure:
        |   |- shared/              # shared modules dir
        |   |- some-page-1/         # some-page-1 modules dir
        |   |- some-page-2/         # some-page-2 modules dir
+       |   |- not-found/           # not-found modules dir
+       |   |- not-supported/       # not-supported modules dir
        |- pages
        |   |- some-page-1.html
        |   |- some-page-2.html
@@ -112,7 +114,7 @@ dist
 
 ## Header Element
 
-I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen way too often how under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful! Once you open an html file, edit as needed.
+I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen too often how under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful!
 
 ### Base Feature Support
 
@@ -144,10 +146,13 @@ Platform-specific meta tags/attributes covered include:
 * Android/Chrome
 * Windows
 
-Here is the recommended header element that can be edited to your needs.
+#### Template
+
+Here is the recommended header element that can be cut-n-pasted and edited to fit your needs.
 
 ```html
-<!-- 
+<head>
+    <!-- 
     #############################################################
     Order is important, including href placement! Edit as needed!
     #############################################################
@@ -356,6 +361,7 @@ Here is the recommended header element that can be edited to your needs.
   <noscript></noscript>
 
   <title></title>
+</head>
 ```
 
 > Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
