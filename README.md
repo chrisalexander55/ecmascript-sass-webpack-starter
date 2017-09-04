@@ -364,6 +364,8 @@ Other stuff I've found helpful in my development journey...
 ### Port Management
 
 ```bash
+# strictly unix-based, of course...
+
 # list all open ports
 $ netstat -nat | grep LISTEN
 
