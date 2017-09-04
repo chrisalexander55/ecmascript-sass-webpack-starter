@@ -111,8 +111,6 @@ dist
 
 I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen way too often how under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful! Once you open an html file, edit as needed.
 
-> Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
-
 ### Base Feature Support
 
 Standard tags/attributes cover:
@@ -142,6 +140,8 @@ Platform-specific meta tags/attributes covered include:
 * iOS
 * Android/Chrome
 * Windows
+
+Here is the recommended header element that can be edited to your needs.
 
 ```html
 <!-- 
@@ -354,6 +354,8 @@ Platform-specific meta tags/attributes covered include:
 
   <title></title>
 ```
+
+> Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
 
 ## Other Helpers
 
