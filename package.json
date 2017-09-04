@@ -38,6 +38,7 @@
   ],
   "scripts": {
     "postinstall": "cp env.example.js env.js",
+    "start": "echo \"Use environment-specific start commands: 'npm run start:container' inside docker container or 'npm run start:host' when on host OS\"",
     "start:container": "webpack-dashboard -- webpack-dev-server --host 0.0.0.0 --config webpack/dev.config.js --watch",
     "start:host": "webpack-dashboard -- webpack-dev-server --config webpack/dev.config.js --watch --open-page \"index.html\"",
     "lighthouse:host": "lighthouse 'http://localhost:3000' --port 3002 --output-path=./perf/lighthouse-report.json --output json --save-artifacts",

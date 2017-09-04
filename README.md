@@ -364,7 +364,7 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
 </head>
 ```
 
-> Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Header element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
+> Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Head element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
 
 ## Other Helpers
 
