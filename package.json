@@ -41,7 +41,7 @@
     "start:container": "webpack-dashboard -- webpack-dev-server --host 0.0.0.0 --config webpack/dev.config.js --watch",
     "start:host": "webpack-dashboard -- webpack-dev-server --config webpack/dev.config.js --watch --open-page \"index.html\"",
     "lighthouse:host": "lighthouse 'http://localhost:3000' --port 3002 --output-path=./perf/lighthouse-report.json --output json --save-artifacts",
-    "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color"
+    "build": "cross-env NODE_ENV=production webpack --config webpack/config.js --progress --display-error-details --color"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0"

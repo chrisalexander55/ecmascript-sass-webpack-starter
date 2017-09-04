@@ -1,10 +1,7 @@
 const path = require('path');
 const webpackMerge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
-const webpackCommon = require('./dev.common.config');
-
-const env = require('../env');
-const proxyRules = require('../src/app/js/shared/proxy/config');
+const webpackCommon = require('./common.config');
 
 // webpack plugins
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
@@ -15,8 +12,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const StyleLoader = require('style-loader');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const DashboardPlugin = require('webpack-dashboard/plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const MINIFY_OPTS =  {
@@ -34,11 +31,13 @@ const MINIFY_OPTS =  {
 
 module.exports = webpackMerge(webpackCommon, {
 
-  devtool: 'inline-source-map',
+  bail: true,
+  devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, '../dev'),
-    filename: 'js/[name].js',
-    sourceMapFilename: 'js/[name].map'
+    path: path.resolve(__dirname, '../dist'),
+    filename: 'js/[name]-[chunkhash].min.js',
+    sourceMapFilename: 'js/[name]-[chunkhash].map',
+    publicPath: '/'
   },
 
   module: {
@@ -53,10 +52,19 @@ module.exports = webpackMerge(webpackCommon, {
               loader: 'css-loader',
               options: {
                 modules: true,
-                minimize: false,
+                minimize: true,
                 sourceMap: true,
                 importLoaders: 2,
                 localIdentName: '[name]__[local]'
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                includePaths: [path.resolve(__dirname, '../src/app')],
+                outputStyle: 'expanded',
+                sourceMap: true,
+                sourceMapContents: true
               }
             },
             {
@@ -67,14 +75,6 @@ module.exports = webpackMerge(webpackCommon, {
                 },
                 sourceMap: true
               }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                outputStyle: 'expanded',
-                sourceMap: true,
-                sourceMapContents: true
-              }
             }
           ]
         })
@@ -84,37 +84,21 @@ module.exports = webpackMerge(webpackCommon, {
   },
 
   plugins: [
-    // ####### add chunks as script tags within respective HTML file ########
-    // some-page-1.html
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: path.resolve(__dirname, '../src/app/pages/some-page-1.html'),
-      chunks: ['vendor', 'common', 'some-page-1'],
-      // minify: MINIFY_OPTS,
-      filename: "pages/some-page-1.html"
+    // assert scss style rules
+    new StyleLintPlugin({
+      configFile: '.stylelintrc',
+      context: 'src/app',
+      files: '**/*.scss',
+      failOnError: true,
+      quiet: false,
+      syntax: 'scss'
     }),
-    // some-page-2.html
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: path.resolve(__dirname, '../src/app/pages/some-page-2.html'),
-      chunks: ['vendor', 'common', 'some-page-2'],
-      // minify: MINIFY_OPTS,
-      filename: "pages/some-page-2.html"
-    }),
-    // index.html
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: path.resolve(__dirname, '../src/app/index.html'),
-      chunks: ['vendor', 'common', 'index'],
-      // minify: MINIFY_OPTS,
-      filename: "index.html"
-    }),
-    // ###############################
-
-    new CleanWebpackPlugin(['dev'], {
+    // clean-out build destination dist/
+    new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '..'),
       exclude: '.gitignore'
     }),
+    // copy needed assets only into dist/
     new CopyWebpackPlugin([
         {
           from: path.resolve(__dirname, '../src/app/assets')
@@ -126,19 +110,47 @@ module.exports = webpackMerge(webpackCommon, {
         ]
       }
     ),
-    new DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
+    // ####### add chunks as script tags within respective HTML file ########
+    // some-page-1.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/pages/some-page-1.html'),
+      chunks: ['vendor', 'common', 'some-page-1'],
+      minify: MINIFY_OPTS,
+      filename: "pages/some-page-1.html"
     }),
-    new ExtractTextPlugin('css/[name].css'),
+    // some-page-2.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/pages/some-page-2.html'),
+      chunks: ['vendor', 'common', 'some-page-2'],
+      minify: MINIFY_OPTS,
+      filename: "pages/some-page-2.html"
+    }),
+    // index.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/index.html'),
+      chunks: ['vendor', 'common', 'index'],
+      minify: MINIFY_OPTS,
+      filename: "index.html"
+    }),
+    // not-found.html
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.resolve(__dirname, '../src/app/not-found.html'),
+      chunks: ['vendor', 'common', 'not-found'],
+      minify: MINIFY_OPTS,
+      filename: "not-found.html"
+    }),
+    new ExtractTextPlugin('css/[name]-[chunkhash].min.css'),
     new UglifyJsPlugin({
       compressor: {
         screw_ie8: true,
         warnings: false
       },
       mangle: {
-        screw_ie8: false
+        screw_ie8: true
       },
       output: {
         comments: false,
@@ -146,38 +158,6 @@ module.exports = webpackMerge(webpackCommon, {
       },
       sourceMap: true
     }),
-    // new UglifyJsPlugin({
-    //   compressor: {
-    //     screw_ie8: true,
-    //     warnings: false
-    //   },
-    //   mangle: {
-    //     screw_ie8: true
-    //   },
-    //   output: {
-    //     comments: false,
-    //     screw_ie8: true
-    //   },
-    //   test: /common-/,
-    //   sourceMap: true
-    // }),
-    new StyleLintPlugin({
-      configFile: '.stylelintrc',
-      context: 'src/sass',
-      files: '**/*.scss',
-      failOnError: true,
-      quiet: false,
-      syntax: 'scss'
-    }),
-    new LoaderOptionsPlugin({
-      options: {
-        context: '/',
-        sassLoader: {
-          includePaths: [path.resolve(__dirname, '../src/app')]
-        }
-      }
-    }),
-    new DashboardPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: 'server',
       analyzerHost: '0.0.0.0',
@@ -190,26 +170,6 @@ module.exports = webpackMerge(webpackCommon, {
       statsOptions: null,
       logLevel: 'info'
     })
-  ],
-
-  devServer: {
-    host: env.devServer.host || 'localhost',
-    port: env.devServer.port || 3000,
-    contentBase: [ path.resolve(__dirname, '../dev') ], //, path.resolve(__dirname, '../src/app/pages') ],
-    watchContentBase: true,
-    compress: true,
-    hot: true,
-    historyApiFallback: {
-      disableDotRule: true
-    },
-    watchOptions: {
-      ignored: /node_modules/
-    },
-    overlay: {
-      warnings: true,
-      errors: true
-    },
-    proxy: proxyRules
-  }
+  ]
 
 });
