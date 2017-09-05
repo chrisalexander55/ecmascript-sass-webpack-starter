@@ -19,10 +19,11 @@ The project supports the following "out-of-box" features:
 
 * Multi-Page SPAs
 * EcmaScript (Babel and ESLint)
-* SASS (4.X, linting)
+* SASS (4.X, Stylelint)
 * Webpack (3.X, dashboard, dev-server)
 * Google Lighthouse (performance/best-practice profiling)
 * Progressive Web Application (PWA) compliance
+* Documentation (JsDoc)
 * Docker Container (optional)
 
 ## Installation
@@ -365,6 +366,16 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
 ```
 
 > Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Head element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
+
+## Documentation
+
+Generate documentation based on [JsDoc](https://github.com/jsdoc3/jsdoc) formated code comments:
+
+```bash
+$ npm run docs
+
+# produces docs directory; open index.html to inspect
+```
 
 ## Other Helpers
 
