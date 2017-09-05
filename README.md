@@ -120,7 +120,7 @@ Generate documentation based on [JsDoc](https://github.com/jsdoc3/jsdoc) formate
 ```bash
 $ npm run docs
 
-# produces docs directory; open index.html to inspect
+# outputs into docs/ directory; open index.html to inspect
 ```
 
 ## Header Element

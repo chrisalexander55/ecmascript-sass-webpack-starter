@@ -3,6 +3,7 @@
 ### Project ###
 docs/
 dist/
+.vscode/
 env.js
 
 ### Linux ###
