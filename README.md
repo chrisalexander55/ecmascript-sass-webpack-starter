@@ -40,8 +40,7 @@ The latest [official Node image](https://hub.docker.com/_/node/) from the [Node.
 # build and start container
 $ . ./run.sh
 
-# this will dump you on the commandline inside the container; 
-# all remaining CLI tasks happen here...
+# this will dump you on the commandline inside the container
 ```
 
 ### Project Hydration
@@ -57,6 +56,7 @@ After installation, you will see this directory structure:
 ```bash
 |- webpack/                        # webpack config dir
 |- src
+   |- robots.txt
    |- app
        |- assets
        |   |- platform/            # icons + platform config dir
@@ -111,6 +111,7 @@ dist
  |- index.html
  |- not-found.html
  |- not-supported.html
+ |- robots.txt
 ```
 
 ## Documentation
