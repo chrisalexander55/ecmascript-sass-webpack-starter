@@ -102,6 +102,9 @@ module.exports = webpackMerge(webpackCommon, {
     new CopyWebpackPlugin([
         {
           from: path.resolve(__dirname, '../src/app/assets')
+        },
+        {
+          from: path.resolve(__dirname, '../src/app/robots.txt')
         }
       ], {
         ignore: [

@@ -1,5 +1,9 @@
 # es6/7-sass-webpack-starter changelog
 
+## 1.1.4
+
+* added robots.txt
+
 ## 1.1.3
 
 * This is a bone-head patch because I forgot to commit CHANGELOG.md

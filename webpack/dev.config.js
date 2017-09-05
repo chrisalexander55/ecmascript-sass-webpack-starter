@@ -7,6 +7,7 @@ const proxyRules = require('../src/app/js/shared/proxy/config');
 
 // webpack plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -105,6 +106,21 @@ module.exports = webpackMerge(webpackCommon, {
       chunks: ['vendor', 'common', 'index'],
       filename: "index.html"
     }),
+    // copy needed assets only into dev/src
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../src/app/assets')
+      },
+      {
+        from: path.resolve(__dirname, '../src/app/robots.txt')
+      }
+    ], {
+      ignore: [
+        'js/',
+        'sass/'
+      ]
+    }
+  ),
     new HotModuleReplacementPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: 'server',
