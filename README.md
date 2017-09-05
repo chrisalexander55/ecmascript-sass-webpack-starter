@@ -113,6 +113,16 @@ dist
  |- not-supported.html
 ```
 
+## Documentation
+
+Generate documentation based on [JsDoc](https://github.com/jsdoc3/jsdoc) formated code comments:
+
+```bash
+$ npm run docs
+
+# produces docs directory; open index.html to inspect
+```
+
 ## Header Element
 
 I know, "Dude, you talking to me about the HTML Header element?" Yes, I am because I've seen too often how under utilized it is in helping developers/organizations delivery the best possible user experience, device support and SEO. Configured right, the HTML Header is powerful!
@@ -366,16 +376,6 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
 ```
 
 > Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Head element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
-
-## Documentation
-
-Generate documentation based on [JsDoc](https://github.com/jsdoc3/jsdoc) formated code comments:
-
-```bash
-$ npm run docs
-
-# produces docs directory; open index.html to inspect
-```
 
 ## Other Helpers
 
