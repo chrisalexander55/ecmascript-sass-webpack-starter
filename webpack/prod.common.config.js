@@ -8,12 +8,12 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 module.exports = {
 
   entry: {
-    'vendor': './src/app/js/vendor.js',
-    'index': './src/app/js/index/bootstrap.js',
-    'not-found': './src/app/js/not-found/bootstrap.js',
-    'not-supported': './src/app/js/not-supported/bootstrap.js',
-    'some-page-1': './src/app/js/some-page-1/bootstrap.js',
-    'some-page-2': './src/app/js/some-page-2/bootstrap.js'
+    'vendor': './src/app/modules/vendor.js',
+    'index': './src/app/modules/index/bootstrap.js',
+    'not-found': './src/app/modules/not-found/bootstrap.js',
+    'not-supported': './src/app/modules/not-supported/bootstrap.js',
+    'some-page-1': './src/app/modules/some-page-1/bootstrap.js',
+    'some-page-2': './src/app/modules/some-page-2/bootstrap.js'
   },
 
   resolve: {
@@ -63,18 +63,18 @@ module.exports = {
     // vendor module
     new Webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
-      filename: "js/vendor-[chunkhash].min.js",
+      filename: "modules/vendor-[chunkhash].min.js",
       minChunks: Infinity,
     }),
     // Put modules common to all modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
       name: "common",
-      filename: 'js/common-[chunkhash].min.js',
+      filename: 'modules/common-[chunkhash].min.js',
       minChunks: 3
     }),
     // Put common async (lazy) modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
-      async: "js/common-lazy-[chunkhash].min.js", 
+      async: "modules/common-lazy-[chunkhash].min.js", 
       children: true
     })
 

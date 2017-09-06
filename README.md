@@ -2,6 +2,7 @@
 
 [![license](https://img.shields.io/github/license/chrisalexander55/ecmascript-sass-webpack-starter.svg)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/ecmascript-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/ecmascript-sass-webpack-starter)
+[![node](https://img.shields.io/badge/node-%3E%3D6.0.0-brightgreen.svg)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter)
 [![David](https://img.shields.io/david/chrisalexander55/ecmascript-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/blob/master/package.json)
 [![David](https://img.shields.io/david/dev/chrisalexander55/ecmascript-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/blob/master/package.json)
 [![GitHub issues](https://img.shields.io/github/issues/chrisalexander55/ecmascript-sass-webpack-starter.svg)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/issues)
@@ -60,7 +61,7 @@ After installation, you will see this directory structure:
    |- app
        |- assets
        |   |- platform/            # icons + platform config dir
-       |- js
+       |- modules
        |   |- index/               # index modules dir
        |   |- shared/              # shared modules dir
        |   |- some-page-1/         # some-page-1 modules dir
@@ -86,7 +87,7 @@ $ npm run postinstall
 # edit env.js per your environment needs
 
 # 1. development
-# - edit src/app/js/shared/proxy/config.js to hit API resources you need
+# - edit src/app/modules/shared/proxy/config.js to hit API resources you need
 
 # 1a. starts up the webpack-dev-server from host OS + launches browser pointing to http://localhost:3000/index.html
 $ npm start:host
@@ -105,7 +106,7 @@ Distribution directory structure will look like this after transpilation:
 ```bash
 dist
  |- css/
- |- js/
+ |- modules/
  |- pages/
  |- platform/
  |- index.html
