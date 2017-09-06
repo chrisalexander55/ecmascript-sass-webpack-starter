@@ -58,6 +58,7 @@ After installation, you will see this directory structure:
 |- webpack/                        # webpack config dir
 |- src
    |- robots.txt
+   |- test                         # test dir
    |- app
        |- assets
        |   |- platform/            # icons + platform config dir
@@ -114,6 +115,10 @@ dist
  |- not-supported.html
  |- robots.txt
 ```
+
+## Testing
+
+
 
 ## Documentation
 
@@ -320,7 +325,8 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
   <!-- 
     ########## Start: Links + Platform Features ##########
   -->
-  <!-- UA directives -->
+
+  <!-- %%%% UA directives %%%% -->
   <!-- Origin that will be used to fetch resources, the UA "should" resolve as early as possible; https://www.w3.org/TR/resource-hints/#dns-prefetch -->
   <link href="//some-origin.com" rel="dns-prefetch">
   <!-- Initiate early connection (DNS, TCP handshake and optional TLS negotiation) to origin; https://www.w3.org/TR/resource-hints/#preconnect -->
@@ -340,7 +346,7 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
   <link href="platform/windows/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
   <link href="platform/windows/favicon-96x96.png" rel="icon" type="image/png" sizes="96x96">
   <!-- Windows Tile UI  -->
-  <!-- See root file platform/windows/browserconfig.xml -->
+  <!-- See file platform/windows/browserconfig.xml -->
 
   <!-- %%%% iOS %%%% -->
   <!-- Apple icons -->
@@ -368,10 +374,20 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
     ########## END: Links + Platform Features ##########
   -->
 
-  <!-- Scripts (generally, preload > async) 
-  <script src="https://origin.com/my-script.js" async|defer></script>
+
+  <!-- 
+    ########## START: Scripts ##########
   -->
+
+  <!-- Scripts (generally, preload > async) 
+  <script src="https://origin.com/my-script.min.js" async|defer type="[text/javascript|module]"></script>
+  -->
+
   <noscript></noscript>
+
+  <!-- 
+    ########## END: Scripts ##########
+  -->
 
   <title></title>
 </head>
