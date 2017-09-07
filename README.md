@@ -10,7 +10,7 @@
 
 ## Overview
 
-This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass - optionally served from a lightly configured Docker container. The project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing bloat and complexity of today's Franken-frameworks.
+This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass (4.X) - optionally served from a lightly configured Docker container. The project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing bloat and complexity of today's Franken-frameworks.
 
 > This repository is inspired from [micooz/es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter).
 
@@ -19,11 +19,12 @@ This is a starter/boilerplate project for a web application requiring ECMAScript
 The project supports the following "out-of-box" features:
 
 * Multi-Page SPAs
-* EcmaScript (Babel and ESLint)
+* EcmaScript (Babel (6.X) and ESLint)
 * SASS (4.X, Stylelint)
 * Webpack (3.X, dashboard, dev-server)
 * Google Lighthouse (performance/best-practice profiling)
 * Progressive Web Application (PWA) compliance
+* Testing (Mocha, Chai, Istanbul)
 * Documentation (JsDoc)
 * Docker Container (optional)
 
@@ -58,7 +59,7 @@ After installation, you will see this directory structure:
 |- webpack/                        # webpack config dir
 |- src
    |- robots.txt
-   |- test                         # test dir
+   |- test/                        # test dir
    |- app
        |- assets
        |   |- platform/            # icons + platform config dir
@@ -118,16 +119,19 @@ dist
 
 ## Testing
 
+Tests have a single entry point via `src/test/index.spec.js` and are authored using Mocha and Chai with Istanbul test coverage reporting. Edit as needed.
 
+```bash
+$ npm test
+```
 
 ## Documentation
 
 Generate documentation based on [JsDoc](https://github.com/jsdoc3/jsdoc) formated code comments:
 
 ```bash
+# outputs into docs/ directory; open index.html
 $ npm run docs
-
-# outputs into docs/ directory; open index.html to inspect
 ```
 
 ## Header Element

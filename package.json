@@ -43,6 +43,7 @@
     "start:host": "webpack-dashboard -- webpack-dev-server --config webpack/dev.config.js --watch --open-page \"index.html\"",
     "lighthouse:host": "lighthouse 'http://localhost:3000' --port 3002 --output-path=./perf/lighthouse-report.json --output json --save-artifacts",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
+    "test": "Echo \"Not implemented yet\"",
     "docs": "jsdoc --package package.json --readme src/DOCS-README.md -c jsdoc.config.json"
   },
   "dependencies": {

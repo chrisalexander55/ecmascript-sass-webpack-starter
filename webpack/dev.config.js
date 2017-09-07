@@ -49,6 +49,18 @@ module.exports = webpackMerge(webpackCommon, {
             }
           }
         ]
+      },
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'istanbul-instrumenter-loader',
+          options: { 
+            esModules: true,
+            preserveComments: true
+          }
+        },
+        enforce: 'post',
+        exclude: /node_modules|\.spec\.js$/,
       }
     ]
 
