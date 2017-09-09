@@ -89,11 +89,11 @@ $ npm run postinstall
 # - edit src/app/js/shared/proxy/config.js to hit API resources you need
 
 # 1a. starts up the webpack-dev-server from host OS + launches browser pointing to http://localhost:3000/index.html
-$ npm start:host
+$ npm run start:host
 
 # 1b. starts up the weback-dev-server from container
 # on your host OS, open your favorite web browser and point to url http://localhost:3000
-$ npm start:container
+$ npm run start:container
 
 # 2. production
 # outputs into dist/ directory
@@ -378,9 +378,9 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
 
 > Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Head element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
 
-## Other Helpers
+## Helpers
 
-Other stuff I've found helpful in my development journey...
+Other stuff I've found helpful...
 
 ### Port Management
 
