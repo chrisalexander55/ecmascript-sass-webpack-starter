@@ -6,7 +6,7 @@
     "name": "Chris Alexander"
   },
   "engines": {
-    "node": ">=8.0.0",
+    "node": ">=6.0.0",
     "npm": ">=3.0.0"
   },
   "license": "MIT",
@@ -43,7 +43,8 @@
     "start:host": "webpack-dashboard -- webpack-dev-server --config webpack/dev.config.js --watch --open-page \"index.html\"",
     "lighthouse:host": "lighthouse 'http://localhost:3000' --port 3002 --output-path=./perf/lighthouse-report.json --output json --save-artifacts",
     "build": "cross-env NODE_ENV=production webpack --config webpack/prod.config.js --progress --display-error-details --color",
-    "docs": "jsdoc --package package.json --readme src/README.md -c jsdoc.config.json"
+    "test": "Echo \"Not implemented yet\"",
+    "docs": "jsdoc --package package.json --readme src/DOCS-README.md -c jsdoc.config.json"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0"
@@ -56,6 +57,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-env": "^1.6.0",
+    "chai": "^4.1.2",
     "clean-webpack-plugin": "^0.1.16",
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.1",
@@ -66,9 +68,11 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
+    "istanbul-instrumenter-loader": "^3.0.0",
     "jsdoc": "^3.5.4",
     "json-loader": "^0.5.4",
     "lighthouse": "^2.4.0",
+    "mocha": "^3.5.0",
     "name-all-modules-plugin": "^1.0.1",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",

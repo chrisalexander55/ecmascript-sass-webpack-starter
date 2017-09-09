@@ -2,6 +2,7 @@
 
 [![license](https://img.shields.io/github/license/chrisalexander55/ecmascript-sass-webpack-starter.svg)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/ecmascript-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://www.npmjs.com/package/ecmascript-sass-webpack-starter)
+[![node](https://img.shields.io/badge/node-%3E%3D6.0.0-brightgreen.svg)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter)
 [![David](https://img.shields.io/david/chrisalexander55/ecmascript-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/blob/master/package.json)
 [![David](https://img.shields.io/david/dev/chrisalexander55/ecmascript-sass-webpack-starter.svg?maxAge=2592000?style=flat-square)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/blob/master/package.json)
 [![GitHub issues](https://img.shields.io/github/issues/chrisalexander55/ecmascript-sass-webpack-starter.svg)](https://github.com/chrisalexander55/ecmascript-sass-webpack-starter/issues)
@@ -9,7 +10,7 @@
 
 ## Overview
 
-This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass - optionally served from a lightly configured Docker container. The project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing bloat and complexity of today's Franken-frameworks.
+This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass (4.X) - optionally served from a lightly configured Docker container. The project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing bloat and complexity of today's Franken-frameworks.
 
 > This repository is inspired from [micooz/es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter).
 
@@ -18,11 +19,12 @@ This is a starter/boilerplate project for a web application requiring ECMAScript
 The project supports the following "out-of-box" features:
 
 * Multi-Page SPAs
-* EcmaScript (Babel and ESLint)
+* EcmaScript (Babel (6.X) and ESLint)
 * SASS (4.X, Stylelint)
 * Webpack (3.X, dashboard, dev-server)
 * Google Lighthouse (performance/best-practice profiling)
 * Progressive Web Application (PWA) compliance
+* Testing (Mocha, Chai, Istanbul)
 * Documentation (JsDoc)
 * Docker Container (optional)
 
@@ -57,10 +59,11 @@ After installation, you will see this directory structure:
 |- webpack/                        # webpack config dir
 |- src
    |- robots.txt
+   |- test/                        # test dir
    |- app
        |- assets
        |   |- platform/            # icons + platform config dir
-       |- js
+       |- modules
        |   |- index/               # index modules dir
        |   |- shared/              # shared modules dir
        |   |- some-page-1/         # some-page-1 modules dir
@@ -86,7 +89,7 @@ $ npm run postinstall
 # edit env.js per your environment needs
 
 # 1. development
-# - edit src/app/js/shared/proxy/config.js to hit API resources you need
+# - edit src/app/modules/shared/proxy/config.js to hit API resources you need
 
 # 1a. starts up the webpack-dev-server from host OS + launches browser pointing to http://localhost:3000/index.html
 $ npm run start:host
@@ -105,7 +108,7 @@ Distribution directory structure will look like this after transpilation:
 ```bash
 dist
  |- css/
- |- js/
+ |- modules/
  |- pages/
  |- platform/
  |- index.html
@@ -114,14 +117,21 @@ dist
  |- robots.txt
 ```
 
+## Testing
+
+Tests have a single entry point via `src/test/index.spec.js` and are authored using Mocha and Chai with Istanbul test coverage reporting. Edit as needed.
+
+```bash
+$ npm test
+```
+
 ## Documentation
 
 Generate documentation based on [JsDoc](https://github.com/jsdoc3/jsdoc) formated code comments:
 
 ```bash
+# outputs into docs/ directory; open index.html
 $ npm run docs
-
-# outputs into docs/ directory; open index.html to inspect
 ```
 
 ## Header Element
@@ -319,7 +329,8 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
   <!-- 
     ########## Start: Links + Platform Features ##########
   -->
-  <!-- UA directives -->
+
+  <!-- %%%% UA directives %%%% -->
   <!-- Origin that will be used to fetch resources, the UA "should" resolve as early as possible; https://www.w3.org/TR/resource-hints/#dns-prefetch -->
   <link href="//some-origin.com" rel="dns-prefetch">
   <!-- Initiate early connection (DNS, TCP handshake and optional TLS negotiation) to origin; https://www.w3.org/TR/resource-hints/#preconnect -->
@@ -339,7 +350,7 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
   <link href="platform/windows/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
   <link href="platform/windows/favicon-96x96.png" rel="icon" type="image/png" sizes="96x96">
   <!-- Windows Tile UI  -->
-  <!-- See root file platform/windows/browserconfig.xml -->
+  <!-- See file platform/windows/browserconfig.xml -->
 
   <!-- %%%% iOS %%%% -->
   <!-- Apple icons -->
@@ -367,10 +378,20 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
     ########## END: Links + Platform Features ##########
   -->
 
-  <!-- Scripts (generally, preload > async) 
-  <script src="https://origin.com/my-script.js" async|defer></script>
+
+  <!-- 
+    ########## START: Scripts ##########
   -->
+
+  <!-- Scripts (generally, preload > async) 
+  <script src="https://origin.com/my-script.min.js" async|defer type="[text/javascript|module]"></script>
+  -->
+
   <noscript></noscript>
+
+  <!-- 
+    ########## END: Scripts ##########
+  -->
 
   <title></title>
 </head>

@@ -3,7 +3,7 @@ const webpackMerge = require('webpack-merge');
 const webpackCommon = require('./dev.common.config');
 
 const env = require('../env');
-const proxyRules = require('../src/app/js/shared/proxy/config');
+const proxyRules = require('../src/app/modules/shared/proxy/config');
 
 // webpack plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -49,6 +49,18 @@ module.exports = webpackMerge(webpackCommon, {
             }
           }
         ]
+      },
+      {
+        test: /\.js$/,
+        use: {
+          loader: 'istanbul-instrumenter-loader',
+          options: { 
+            esModules: true,
+            preserveComments: true
+          }
+        },
+        enforce: 'post',
+        exclude: /node_modules|\.spec\.js$/,
       }
     ]
 
@@ -116,7 +128,7 @@ module.exports = webpackMerge(webpackCommon, {
       }
     ], {
       ignore: [
-        'js/',
+        'modules/',
         'sass/'
       ]
     }
