@@ -117,9 +117,9 @@ dist
  |- robots.txt
 ```
 
-## Testing
+## Testing (WIP)
 
-Tests have a single entry point via `src/test/index.spec.js` and are authored using Mocha and Chai with Istanbul test coverage reporting. Edit as needed.
+Tests have a single entry point via `src/test/index.spec.js` and are authored using Mocha and Chai with Istanbul coverage reporting. Edit as needed.
 
 ```bash
 $ npm test

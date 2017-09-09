@@ -10,7 +10,7 @@ export class App {
     };
     console.log(this.props);
 
-    this.props.dom.innerHTML = 'Loading from github...';
+    this.props.dom.innerHTML = 'Loading from Github...';
   }
 
   render(json) {
