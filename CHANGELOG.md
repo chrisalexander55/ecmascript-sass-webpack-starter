@@ -3,6 +3,9 @@
 ## 1.1.4
 
 * added robots.txt
+* renamed js/ to modules/
+* updated head element to support `<script type="module" ...></script>`
+* merged test tooling dev-dependencies
 
 ## 1.1.3
 
