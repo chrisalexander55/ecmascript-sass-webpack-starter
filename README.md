@@ -18,7 +18,7 @@ This is a starter/boilerplate project for a web application requiring ECMAScript
 
 The project supports the following "out-of-box" features:
 
-* Multi-Page SPAs
+* Multiple Entry Points, Multiple Pages
 * EcmaScript (Babel (6.X) and ESLint)
 * SASS (4.X, Stylelint)
 * Webpack (3.X, dashboard, dev-server)
