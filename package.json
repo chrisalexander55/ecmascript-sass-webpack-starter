@@ -1,6 +1,6 @@
 {
   "name": "ecmascript-sass-webpack-starter",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "A starter project for a web application requiring EcmaScript, Webpack, Sass; optionally running in a lightly configured Docker container.",
   "contributors": [
     {
