@@ -119,7 +119,9 @@ dist
 
 ## Testing (WIP)
 
-Tests have a single entry point via `src/test/index.spec.js` and are authored using Mocha and Chai with Istanbul coverage reporting. Edit as needed.
+> Not working coverage yet but present if you need it now.
+
+Tests have a single entry point via `src/test/index.js` and leverage Mocha and Chai (Should) with Istanbul coverage reporting.
 
 ```bash
 $ npm test

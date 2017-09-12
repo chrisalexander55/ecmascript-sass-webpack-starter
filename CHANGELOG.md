@@ -5,7 +5,7 @@
 * added robots.txt
 * renamed js/ to modules/
 * updated head element to support `<script type="module" ...></script>`
-* merged test tooling dev-dependencies
+* merged test tooling dev-dependencies; no working tests => WIP
 
 ## 1.1.3
 
