@@ -10,7 +10,7 @@
 
 ## Overview
 
-This is a starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass (4.X) - optionally served from a lightly configured Docker container. The project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing bloat and complexity of today's Franken-frameworks.
+Starter/boilerplate project for a web application requiring ECMAScript (6/7), Webpack (3.X) and Sass (4.X) - optionally served from a lightly configured Docker container. The project is particularly helpful for craftsmen/craftswomen demanding more control of their frontend stack and tired of the growing bloat and complexity of today's Franken-frameworks.
 
 > This repository is inspired from [micooz/es6-webpack2-starter](https://github.com/micooz/es6-webpack2-starter).
 
