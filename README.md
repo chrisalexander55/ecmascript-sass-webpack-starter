@@ -385,9 +385,8 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
     ########## START: Scripts ##########
   -->
 
-  <!-- Scripts (generally, preload > async) 
+  <!-- Scripts (generally, preload > async) -->
   <script src="https://origin.com/my-script.min.js" async|defer type="[text/javascript|module]"></script>
-  -->
 
   <noscript></noscript>
 
