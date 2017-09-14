@@ -50,7 +50,10 @@
     "docs": "jsdoc --package package.json --readme src/DOCS-README.md -c jsdoc.config.json"
   },
   "dependencies": {
-    "babel-polyfill": "^6.23.0"
+    "babel-polyfill": "^6.23.0",
+    "bootstrap": "^4.0.0-beta",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.5"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -79,6 +82,7 @@
     "name-all-modules-plugin": "^1.0.1",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
+    "precss": "^2.0.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "stylelint": "^8.0.0",
