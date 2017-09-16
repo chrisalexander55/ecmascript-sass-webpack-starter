@@ -21,6 +21,7 @@ The project supports the following "out-of-box" features:
 * Multiple Entry Points, Multiple Pages
 * EcmaScript (Babel (6.X) and ESLint)
 * SASS (4.X, Stylelint)
+* Twitter Bootstrap (4.X-beta)
 * Webpack (3.X, dashboard, dev-server)
 * Google Lighthouse (performance/best-practice profiling)
 * Progressive Web Application (PWA) compliance
@@ -42,7 +43,7 @@ The latest [official Node image](https://hub.docker.com/_/node/) from the [Node.
 # build and start container
 $ . ./run.sh
 
-# this will dump you on the commandline inside the container
+# this will dump you on the commandline inside the container (root user)
 ```
 
 ### Project Hydration
@@ -103,7 +104,7 @@ $ npm run start:container
 $ npm run build
 ```
 
-Distribution directory structure will look like this after transpilation:
+`npm run build` will create a distribution directory structure that looks like this:
 
 ```bash
 dist
@@ -119,7 +120,7 @@ dist
 
 ## Testing (WIP)
 
-> Not working coverage yet but present if you need it now.
+> No working coverage yet but present if you need it now.
 
 Tests have a single entry point via `src/test/index.js` and leverage Mocha and Chai (Should) with Istanbul coverage reporting.
 
@@ -401,8 +402,6 @@ Here is the recommended header element that can be cut-n-pasted and edited to fi
 > Big props go out to the maintainers at [GetHead.Info](http://gethead.info/). If your technical understanding of the Head element, and its siblings, is thin, I strongly encourage you visit their site to bulk-up your knowledge!
 
 ## Helpers
-
-Other stuff I've found helpful...
 
 ### Port Management
 
