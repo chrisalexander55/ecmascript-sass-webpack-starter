@@ -1,6 +1,7 @@
 const path = require('path');
+const Webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const webpackCommon = require('./dev.common.config');
+const webpackCommon = require('./common.config');
 
 const env = require('../env');
 const proxyRules = require('../src/app/modules/shared/proxy/config');
@@ -8,10 +9,8 @@ const proxyRules = require('../src/app/modules/shared/proxy/config');
 // webpack plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = webpackMerge(webpackCommon, {
@@ -39,11 +38,8 @@ module.exports = webpackMerge(webpackCommon, {
             {
               loader: 'postcss-loader',
               options: {
-                plugins: function () {
-                  return [
-                    require('precss'),
-                    require('autoprefixer')
-                  ];
+                config: {
+                  path: path.resolve(__dirname, 'postcss.config.js')
                 }
               }
             },
@@ -70,21 +66,29 @@ module.exports = webpackMerge(webpackCommon, {
   },
 
   plugins: [
+
     new DefinePlugin({
       'process.env': {
         NODE_ENV: "'development'"
       }
     }),
-    // assert scss style rules
-    new StyleLintPlugin({
-        configFile: '.stylelintrc',
-        context: 'src/app',
-        files: '**/*.scss',
-        failOnError: true,
-        quiet: false,
-        syntax: 'scss'
+    // vendor module
+    // new Webpack.optimize.CommonsChunkPlugin({
+    //   name: "vendor",
+    //   filename: "modules/vendor.js",
+    //   minChunks: Infinity,
+    // }),
+    // Put modules common to all modules into a separate chunk!
+    new Webpack.optimize.CommonsChunkPlugin({
+      name: "common",
+      filename: 'modules/common.js',
+      minChunks: 3
     }),
-
+    // Put common async (lazy) modules into a separate chunk!
+    new Webpack.optimize.CommonsChunkPlugin({
+      async: "modules/common-lazy.js", 
+      children: true
+    }),
     // ####### add chunks as script tags within respective HTML file ########
     // some-page-1.html
     new HtmlWebpackPlugin({
@@ -126,21 +130,6 @@ module.exports = webpackMerge(webpackCommon, {
       chunks: ['common', 'index'],
       filename: "index.html"
     }),
-    // copy needed assets only into dev/src
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../src/app/assets')
-      },
-      {
-        from: path.resolve(__dirname, '../src/app/robots.txt')
-      }
-    ], {
-      ignore: [
-        'modules/',
-        'sass/'
-      ]
-    }
-  ),
     new HotModuleReplacementPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: 'server',
@@ -154,6 +143,7 @@ module.exports = webpackMerge(webpackCommon, {
       statsOptions: null,
       logLevel: 'info'
     }),
+
   ],
 
   devServer: {

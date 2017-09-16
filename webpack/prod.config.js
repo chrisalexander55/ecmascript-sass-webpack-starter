@@ -1,19 +1,16 @@
 const path = require('path');
+const Webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const autoprefixer = require('autoprefixer');
-const webpackCommon = require('./prod.common.config');
+const webpackCommon = require('./common.config');
 
 // webpack plugins
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const UglifyJsPlugin = require('webpack/lib/optimize/UglifyJsPlugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-const StyleLoader = require('style-loader');
-const StyleLintPlugin = require('stylelint-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const MINIFY_OPTS =  {
@@ -37,7 +34,6 @@ module.exports = webpackMerge(webpackCommon, {
     path: path.resolve(__dirname, '../dist'),
     filename: 'modules/[name]-[chunkhash].min.js',
     sourceMapFilename: 'modules/[name]-[chunkhash].map'
-    // publicPath: '/dist/'
   },
 
   module: {
@@ -57,25 +53,18 @@ module.exports = webpackMerge(webpackCommon, {
                 localIdentName: '[name]__[local]'
               }
             },
-            // {
-            //   loader: 'postcss-loader',
-            //   options: {
-            //     config: {
-            //       path: path.resolve(__dirname, 'postcss.config.js')
-            //     },
-            //     sourceMap: true,
-            //     plugins: function () {
-            //       return [
-            //         require('precss'),
-            //         require('autoprefixer')
-            //       ];
-            //     }
-            //   }
-            // },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: {
+                  path: path.resolve(__dirname, 'postcss.config.js')
+                },
+                sourceMap: true
+              }
+            },
             {
               loader: 'sass-loader',
               options: {
-                // ident: 'postcss-ident',
                 includePaths: [
                   path.resolve(__dirname, '../src/app')
                 ],
@@ -97,41 +86,40 @@ module.exports = webpackMerge(webpackCommon, {
         NODE_ENV: "'production'"
       }
     }),
-    // assert scss style rules
-    new StyleLintPlugin({
-      configFile: '.stylelintrc',
-      context: 'src/app',
-      files: '**/*.scss',
-      failOnError: true,
-      quiet: false,
-      syntax: 'scss'
-    }),
-    // write out all css files
-    new ExtractTextPlugin({
-      filename: 'css/[name]-[chunkhash].min.css',
-      // publicPath: "../dist/",
-      allChunks: true
-    }),
     // clean-out build destination dist/
     new CleanWebpackPlugin(['dist'], {
       root: path.resolve(__dirname, '..'),
       exclude: '.gitignore'
     }),
-    // copy needed assets only into dist/
-    new CopyWebpackPlugin([
-        {
-          from: path.resolve(__dirname, '../src/app/assets')
-        },
-        {
-          from: path.resolve(__dirname, '../src/app/robots.txt')
+    // add transpiled CSS as style tags within HTML files
+    new ExtractTextPlugin({
+      filename: 'css/[name]-[chunkhash].min.css',
+      allChunks: true
+    }),
+    new Webpack.NamedModulesPlugin(),
+    new Webpack.NamedChunksPlugin((chunk) => {
+        if (chunk.name) {
+            return chunk.name;
         }
-      ], {
-        ignore: [
-          'modules/',
-          'sass/'
-        ]
-      }
-    ),
+        return chunk.modules.map(m => path.relative(m.context, m.request)).join("_");
+    }),
+    // vendor module
+    // new Webpack.optimize.CommonsChunkPlugin({
+    //   name: "vendor",
+    //   filename: "modules/vendor-[chunkhash].min.js",
+    //   minChunks: Infinity,
+    // }),
+    // Put modules common to all modules into a separate chunk!
+    new Webpack.optimize.CommonsChunkPlugin({
+      name: "common",
+      filename: 'modules/common-[chunkhash].min.js',
+      minChunks: 3
+    }),
+    // Put common async (lazy) modules into a separate chunk!
+    new Webpack.optimize.CommonsChunkPlugin({
+      async: "modules/common-lazy-[chunkhash].min.js", 
+      children: true
+    }),
     // ####### add chunks as script tags within respective HTML file ########
     // some-page-1.html
     new HtmlWebpackPlugin({
