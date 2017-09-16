@@ -36,8 +36,8 @@ module.exports = webpackMerge(webpackCommon, {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'modules/[name]-[chunkhash].min.js',
-    sourceMapFilename: 'modules/[name]-[chunkhash].map',
-    publicPath: '/'
+    sourceMapFilename: 'modules/[name]-[chunkhash].map'
+    // publicPath: '/dist/'
   },
 
   module: {
@@ -46,34 +46,45 @@ module.exports = webpackMerge(webpackCommon, {
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
           use: [
+            {
+              loader: 'style-loader'
+            },
             {
               loader: 'css-loader',
               options: {
                 modules: true,
                 minimize: true,
                 sourceMap: true,
-                importLoaders: 2,
+                importLoaders: 1,
                 localIdentName: '[name]__[local]'
               }
             },
+            // {
+            //   loader: 'postcss-loader',
+            //   options: {
+            //     config: {
+            //       path: path.resolve(__dirname, 'postcss.config.js')
+            //     },
+            //     sourceMap: true,
+            //     plugins: function () {
+            //       return [
+            //         require('precss'),
+            //         require('autoprefixer')
+            //       ];
+            //     }
+            //   }
+            // },
             {
               loader: 'sass-loader',
               options: {
-                includePaths: [path.resolve(__dirname, '../src/app')],
+                // ident: 'postcss-ident',
+                includePaths: [
+                  path.resolve(__dirname, '../src/app')
+                ],
                 outputStyle: 'expanded',
                 sourceMap: true,
                 sourceMapContents: true
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                config: {
-                  path: path.resolve(__dirname, 'postcss.config.js')
-                },
-                sourceMap: true
               }
             }
           ]
@@ -84,6 +95,11 @@ module.exports = webpackMerge(webpackCommon, {
   },
 
   plugins: [
+    new DefinePlugin({
+      'process.env': {
+        NODE_ENV: "'production'"
+      }
+    }),
     // assert scss style rules
     new StyleLintPlugin({
       configFile: '.stylelintrc',
@@ -92,6 +108,12 @@ module.exports = webpackMerge(webpackCommon, {
       failOnError: true,
       quiet: false,
       syntax: 'scss'
+    }),
+    // write out all css files
+    new ExtractTextPlugin({
+      filename: 'css/[name]-[chunkhash].min.css',
+      // publicPath: "../dist/",
+      allChunks: true
     }),
     // clean-out build destination dist/
     new CleanWebpackPlugin(['dist'], {
@@ -118,7 +140,8 @@ module.exports = webpackMerge(webpackCommon, {
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/some-page-1.html'),
-      chunks: ['vendor', 'common', 'some-page-1'],
+      chunksSortMode: 'manual',
+      chunks: ['common', 'some-page-1'],
       minify: MINIFY_OPTS,
       filename: "pages/some-page-1.html"
     }),
@@ -126,7 +149,8 @@ module.exports = webpackMerge(webpackCommon, {
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/pages/some-page-2.html'),
-      chunks: ['vendor', 'common', 'some-page-2'],
+      chunksSortMode: 'manual',
+      chunks: ['common', 'some-page-2'],
       minify: MINIFY_OPTS,
       filename: "pages/some-page-2.html"
     }),
@@ -134,7 +158,8 @@ module.exports = webpackMerge(webpackCommon, {
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/index.html'),
-      chunks: ['vendor', 'common', 'index'],
+      chunksSortMode: 'manual',
+      chunks: ['common', 'index'],
       minify: MINIFY_OPTS,
       filename: "index.html"
     }),
@@ -142,7 +167,8 @@ module.exports = webpackMerge(webpackCommon, {
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/not-found.html'),
-      chunks: ['vendor', 'common', 'not-found'],
+      chunksSortMode: 'manual',
+      chunks: ['common', 'not-found'],
       minify: MINIFY_OPTS,
       filename: "not-found.html"
     }),
@@ -150,11 +176,11 @@ module.exports = webpackMerge(webpackCommon, {
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/not-supported.html'),
-      chunks: ['vendor', 'common', 'not-supported'],
+      chunksSortMode: 'manual',
+      chunks: ['common', 'not-supported'],
       minify: MINIFY_OPTS,
       filename: "not-supported.html"
     }),
-    new ExtractTextPlugin('css/[name]-[chunkhash].min.css'),
     new UglifyJsPlugin({
       compressor: {
         screw_ie8: true,

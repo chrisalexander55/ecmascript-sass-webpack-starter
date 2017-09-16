@@ -7,6 +7,7 @@ const proxyRules = require('../src/app/modules/shared/proxy/config');
 
 // webpack plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
@@ -28,40 +29,30 @@ module.exports = webpackMerge(webpackCommon, {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              modules: true,
-              localIdentName: '[name]__[local]'
-            }
-          },
-          {
-            loader: 'postcss-loader', // Run post css actions
-            options: {
-              sourceMap: true,
-              plugins: function () { // post css plugins, can be exported to postcss.config.js
-                return [
-                  require('precss'),
-                  require('autoprefixer')
-                ];
+          use: [
+            {
+              loader: 'style-loader'
+            },
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: function () {
+                  return [
+                    require('precss'),
+                    require('autoprefixer')
+                  ];
+                }
               }
+            },
+            {
+              loader: 'sass-loader'
             }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              outputStyle: 'expanded',
-              sourceMap: true,
-              sourceMapContents: true
-            }
-          }
-        ]
+          ]
       },
+
       {
         test: /\.js$/,
         use: {
@@ -99,35 +90,40 @@ module.exports = webpackMerge(webpackCommon, {
     new HtmlWebpackPlugin({
         inject: true,
         template: path.resolve(__dirname, '../src/app/pages/some-page-1.html'),
-        chunks: ['vendor', 'common', 'some-page-1'],
+        chunksSortMode: 'manual',
+        chunks: ['common', 'some-page-1'],
         filename: "pages/some-page-1.html"
     }),
     // some-page-2.html
     new HtmlWebpackPlugin({
         inject: true,
         template: path.resolve(__dirname, '../src/app/pages/some-page-2.html'),
-        chunks: ['vendor', 'common', 'some-page-2'],
+        chunksSortMode: 'manual',
+        chunks: ['common', 'some-page-2'],
         filename: "pages/some-page-2.html"
     }),
     // not-found.html
     new HtmlWebpackPlugin({
         inject: true,
         template: path.resolve(__dirname, '../src/app/not-found.html'),
-        chunks: ['vendor', 'common', 'not-found'],
+        chunksSortMode: 'manual',
+        chunks: ['common', 'not-found'],
         filename: "not-found.html"
     }),
     // not-supported.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/not-supported.html'),
-      chunks: ['vendor', 'common', 'not-supported'],
+      chunksSortMode: 'manual',
+      chunks: ['common', 'not-supported'],
       filename: "not-supported.html"
   }),
     // index.html
     new HtmlWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, '../src/app/index.html'),
-      chunks: ['vendor', 'common', 'index'],
+      chunksSortMode: 'manual',
+      chunks: ['common', 'index'],
       filename: "index.html"
     }),
     // copy needed assets only into dev/src

@@ -8,7 +8,7 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 module.exports = {
 
   entry: {
-    'vendor': './src/app/modules/vendor.js',
+    // 'vendor': './src/app/modules/vendor.js',
     'index': './src/app/modules/index/bootstrap.js',
     'not-found': './src/app/modules/not-found/bootstrap.js',
     'not-supported': './src/app/modules/not-supported/bootstrap.js',
@@ -39,6 +39,9 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader",
+        options: {
+          babelrc: '../'
+        }
       },
       {
         test: /\.json$/,
@@ -53,6 +56,16 @@ module.exports = {
   },
   plugins: [
     
+    new Webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default']
+
+      // In case you imported plugins individually, you must also require them here:
+      // Util: "exports-loader?Util!bootstrap/js/dist/util",
+      // Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+    }),
     new Webpack.NamedModulesPlugin(),
     new Webpack.NamedChunksPlugin((chunk) => {
         if (chunk.name) {
@@ -61,11 +74,11 @@ module.exports = {
         return chunk.modules.map(m => path.relative(m.context, m.request)).join("_");
     }),
     // vendor module
-    new Webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      filename: "modules/vendor-[chunkhash].min.js",
-      minChunks: Infinity,
-    }),
+    // new Webpack.optimize.CommonsChunkPlugin({
+    //   name: "vendor",
+    //   filename: "modules/vendor-[chunkhash].min.js",
+    //   minChunks: Infinity,
+    // }),
     // Put modules common to all modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
       name: "common",

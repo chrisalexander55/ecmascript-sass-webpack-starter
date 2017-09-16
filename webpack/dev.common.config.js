@@ -4,7 +4,7 @@ const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 module.exports = {
 
   entry: {
-    'vendor': './src/app/modules/vendor.js',
+    // 'vendor': './src/app/modules/vendor.js',
     'index': './src/app/modules/index/bootstrap.js',
     'not-found': './src/app/modules/not-found/bootstrap.js',
     'not-supported': './src/app/modules/not-supported/bootstrap.js',
@@ -25,12 +25,20 @@ module.exports = {
         enforce: "pre",
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "eslint-loader"
+        loader: "eslint-loader",
+        options: {
+          outputReport: {
+            filePath: '../../es-style/es-style-errors.xml'
+          }
+        }
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader",
+        options: {
+          babelrc: '../'
+        }
       },
 
       {
@@ -48,22 +56,32 @@ module.exports = {
   },
 
   plugins: [
-    // vendor module
-    new Webpack.optimize.CommonsChunkPlugin({
-        name: "vendor",
-        filename: "modules/vendor.js",
-        minChunks: Infinity,
+    new Webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default']
+
+      // In case you imported plugins individually, you must also require them here:
+      // Util: "exports-loader?Util!bootstrap/js/dist/util",
+      // Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
     }),
+    // vendor module
+    // new Webpack.optimize.CommonsChunkPlugin({
+    //   name: "vendor",
+    //   filename: "modules/vendor.js",
+    //   minChunks: Infinity,
+    // }),
     // Put modules common to all modules into a separate chunk!
     new Webpack.optimize.CommonsChunkPlugin({
-    name: "common",
-        filename: 'modules/common.js',
-        minChunks: 3
+      name: "common",
+      filename: 'modules/common.js',
+      minChunks: 3
     }),
     // Put common async (lazy) modules into a separate chunk!
-        new Webpack.optimize.CommonsChunkPlugin({
-        async: "modules/common-lazy.js", 
-        children: true
+    new Webpack.optimize.CommonsChunkPlugin({
+      async: "modules/common-lazy.js", 
+      children: true
     })
   ]
 
