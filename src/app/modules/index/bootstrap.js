@@ -12,7 +12,7 @@ function main() {
   document.title = 'Loading...';
 
   const app = new App({
-    dom: document.querySelector('.container'),
+    dom: document.querySelector('.tbl-cntr'),
     prop1: 'prop1',
     prop2: 'prop2',
     prop3: 'prop3'

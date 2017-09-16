@@ -11,7 +11,7 @@ function main() {
   document.title = 'Loading...';
 
   const app = new App({
-    dom: document.querySelector('.container')
+    dom: document.querySelector('.content')
   });
 
   app.writeToConsole();

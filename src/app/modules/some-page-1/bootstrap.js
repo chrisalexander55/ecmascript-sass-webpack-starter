@@ -12,7 +12,7 @@ function main() {
   document.title = 'Loading...';
 
   const app = new App({
-    dom: document.querySelector('.container'),
+    dom: document.querySelector('.content'),
     prop1: 'propA',
     prop2: 'propB',
     prop3: 'propC'
